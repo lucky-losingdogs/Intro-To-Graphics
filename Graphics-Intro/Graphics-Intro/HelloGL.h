@@ -5,9 +5,16 @@
 #include "GL/freeglut.h"
 #include "GLUTCallbacks.h"
 
+#define REFRESHRATE 16
+
 class HelloGL
 {
 public:
+	enum Shape
+	{
+		Triangle, Rectangle, Pentagon
+	};
+	
 	//constructor
 	HelloGL(int argc, char* argv[]);
 
@@ -16,8 +23,17 @@ public:
 
 	void Display();
 
+	void Update();
+
 	void DrawPolygon();
 	void DrawTriangle();
 	void DrawPentagon();
+
+	void RotateShape(float rotation, float direction, Shape drawShape);
+	
+private:
+	float rotationTri;
+	float rotationRect;
+	float rotationPent;
 };
 

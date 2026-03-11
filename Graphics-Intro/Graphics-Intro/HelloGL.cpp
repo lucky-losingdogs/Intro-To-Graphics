@@ -2,12 +2,18 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
+	rotationTri = 0.0f;
+	rotationRect = 0.0f;
+	rotationPent = 0.0f;
+	
 	GLUTCallbacks::Init(this);
 	
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 800);
 	glutCreateWindow("Simple OpenGL Program");
 	glutDisplayFunc(GLUTCallbacks::Display);
+
+	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutMainLoop();
 }
 
@@ -19,9 +25,30 @@ HelloGL::~HelloGL(void)
 void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); //clears the scene
-	DrawTriangle();
-	DrawPentagon();
+
+	RotateShape(rotationTri, -1.0f, Triangle);
+	RotateShape(rotationRect, 1.0f, Rectangle);
+	RotateShape(rotationPent, -1.0f, Pentagon);
+
 	glFlush(); //flushes the scene drawn to the graphics card
+}
+
+void HelloGL::Update()
+{
+	rotationTri += 0.5f;
+	if (rotationTri >= 360.0f)
+		rotationTri = 0.0f;
+
+	rotationRect += 0.2f;
+	if (rotationRect >= 360.0f)
+		rotationRect = 0.0f;
+
+	rotationPent += 0.8f;
+	if (rotationPent >= 360.0f)
+		rotationPent = 0.0f;
+
+	//marks the current window as needing to be redisplayed
+	glutPostRedisplay();
 }
 
 void HelloGL::DrawPolygon()
@@ -69,4 +96,27 @@ void HelloGL::DrawPentagon()
 		glVertex2f(-0.15, 0.3);
 		glEnd(); //defines the end of the draw
 	}
+}
+
+void HelloGL::RotateShape(float rotation, float direction, Shape drawShape)
+{
+	glPushMatrix();
+	glRotatef(rotation, 0.0f, 0.0f, direction);
+
+	switch (drawShape)
+	{
+	case Triangle:
+		DrawTriangle();
+		break;
+	case Rectangle:
+		glTranslatef(0.4f , 0.8f, 0);
+		DrawPolygon();
+		break;
+	case Pentagon:
+		glTranslatef(0.6f, 0.6f, 0);
+		DrawPentagon();
+		break;
+	}
+
+	glPopMatrix();
 }

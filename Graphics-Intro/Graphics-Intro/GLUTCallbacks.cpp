@@ -7,19 +7,26 @@ namespace GLUTCallbacks
 	namespace
 	{
 		//Initialise to a null pointer before we do anything
-		HelloGL* helloGL = nullptr;
+		HelloGL* renderer = nullptr;
 	}	
 
 	void Init(HelloGL* gl)
 	{
-		helloGL = gl;
+		renderer = gl;
 	}
 
 	void Display()
 	{
-		if (helloGL != nullptr)
+		if (renderer != nullptr)
 		{
-			helloGL->Display();
+			renderer->Display();
 		}
+	}
+
+	void Timer(int preferredRefresh)
+	{
+		renderer->Update();
+
+		glutTimerFunc(preferredRefresh, GLUTCallbacks::Timer, preferredRefresh);
 	}
 }
