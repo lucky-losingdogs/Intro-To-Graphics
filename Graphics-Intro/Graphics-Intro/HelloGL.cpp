@@ -7,11 +7,13 @@ HelloGL::HelloGL(int argc, char* argv[])
 	rotationPent = 0.0f;
 	
 	GLUTCallbacks::Init(this);
-	
 	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE);
+
 	glutInitWindowSize(800, 800);
-	glutCreateWindow("Simple OpenGL Program");
+	glutCreateWindow("Best OpenGL In The World");
 	glutDisplayFunc(GLUTCallbacks::Display);
+	glutKeyboardFunc(GLUTCallbacks::Keyboard);
 
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 	glutMainLoop();
@@ -31,24 +33,47 @@ void HelloGL::Display()
 	RotateShape(rotationPent, -1.0f, Pentagon);
 
 	glFlush(); //flushes the scene drawn to the graphics card
+	glutSwapBuffers();
 }
 
 void HelloGL::Update()
 {
-	rotationTri += 0.5f;
-	if (rotationTri >= 360.0f)
-		rotationTri = 0.0f;
-
-	rotationRect += 0.2f;
-	if (rotationRect >= 360.0f)
-		rotationRect = 0.0f;
-
-	rotationPent += 0.8f;
-	if (rotationPent >= 360.0f)
-		rotationPent = 0.0f;
-
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
+}
+
+void HelloGL::Keyboard(unsigned char key, int x, int y)
+{
+	//changes the key input to lower case to stop caps not working
+	key = (char)tolower(key);
+	
+	if (key == 'd')
+	{
+		rotationTri += 0.5f;
+		rotationRect += 0.2f;
+		rotationPent += 0.8f;
+	}
+	if (key == 'a')
+	{
+		rotationTri -= 0.5f;
+		rotationRect -= 0.2f;
+		rotationPent -= 0.8f;
+	}
+
+	rotationTri = ((rotationTri % 360) + 360) % 360;
+
+	if (rotationTri >= 360.0f || rotationTri <= -360.0f)
+	{
+		rotationTri = 0.0f;
+	}
+	if (rotationRect >= 360.0f || rotationRect <= -360.0f)
+	{
+		rotationRect = 0.0f;
+	}
+	if (rotationPent >= 360.0f || rotationPent <= -360.0f)
+	{
+		rotationPent = 0.0f;
+	}
 }
 
 void HelloGL::DrawPolygon()
@@ -61,8 +86,8 @@ void HelloGL::DrawPolygon()
 		glVertex2f(0.75, 0.5); //next point, top right
 		glVertex2f(0.75, -0.5); //bottom right
 		glVertex2f(-0.75, -0.5); //last point of the polygon, bottom left
-		glEnd(); //defines the end of the draw
 	}
+	glEnd(); //defines the end of the draw
 }
 
 void HelloGL::DrawTriangle()
@@ -77,8 +102,8 @@ void HelloGL::DrawTriangle()
 		glVertex2f(-0.9, 0.3);
 		glVertex2f(-0.4, 0.3);
 		glVertex2f(-0.65, 0.7);
-		glEnd(); //defines the end of the draw
 	}
+	glEnd(); //defines the end of the draw
 }
 
 void HelloGL::DrawPentagon()
@@ -94,8 +119,8 @@ void HelloGL::DrawPentagon()
 		glVertex2f(0.25, -0.25);
 		glVertex2f(-0.1, -0.15);
 		glVertex2f(-0.15, 0.3);
-		glEnd(); //defines the end of the draw
 	}
+	glEnd(); //defines the end of the draw
 }
 
 void HelloGL::RotateShape(float rotation, float direction, Shape drawShape)

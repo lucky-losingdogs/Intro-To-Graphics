@@ -25,6 +25,8 @@ public:
 
 	void Update();
 
+	void Keyboard(unsigned char key, int x, int y);
+
 	void DrawPolygon();
 	void DrawTriangle();
 	void DrawPentagon();

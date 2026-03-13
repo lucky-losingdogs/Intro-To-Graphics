@@ -1,16 +1,19 @@
-﻿  HelloGL.cpp
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(77,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(77,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(78,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(78,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(79,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(79,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(92,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(92,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(93,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(93,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(95,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(95,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(96,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(96,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+﻿  GLUTCallbacks.cpp
+  HelloGL.cpp
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(100,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(100,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(101,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(101,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(102,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(102,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(115,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(115,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(116,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(116,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(118,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(118,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(119,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(119,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+  main.cpp
+  Generating Code...
   Graphics-Intro.vcxproj -> C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe
