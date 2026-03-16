@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\GLUTCallbacks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\GLUTCallbacks.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +30,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "HelloGL.cpp",
               "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
-              "RelativeToolTip": "Graphics-Intro\\HelloGL.cpp",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADQAAAAXAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp*",
+              "RelativeToolTip": "Graphics-Intro\\HelloGL.cpp*",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAAAJYAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-03-05T18:21:42.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "HelloGL.h",
               "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h",
               "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.h",
@@ -60,7 +60,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "GLUTCallbacks.h",
               "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\GLUTCallbacks.h",
               "RelativeDocumentMoniker": "Graphics-Intro\\GLUTCallbacks.h",
@@ -68,12 +68,11 @@
               "RelativeToolTip": "Graphics-Intro\\GLUTCallbacks.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-03-05T18:37:58.281Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T18:37:58.281Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "GLUTCallbacks.cpp",
               "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\GLUTCallbacks.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\GLUTCallbacks.cpp",
@@ -81,12 +80,11 @@
               "RelativeToolTip": "Graphics-Intro\\GLUTCallbacks.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-03-05T18:42:24.967Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T18:42:24.967Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\main.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\main.cpp",
@@ -94,8 +92,7 @@
               "RelativeToolTip": "Graphics-Intro\\main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-03-05T18:22:43.871Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-05T18:22:43.871Z"
             }
           ]
         }

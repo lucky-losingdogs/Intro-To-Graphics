@@ -5,6 +5,8 @@ HelloGL::HelloGL(int argc, char* argv[])
 	rotationTri = 0.0f;
 	rotationRect = 0.0f;
 	rotationPent = 0.0f;
+
+	CamInit();
 	
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
@@ -13,15 +15,31 @@ HelloGL::HelloGL(int argc, char* argv[])
 	glutInitWindowSize(800, 800);
 	glutCreateWindow("Best OpenGL In The World");
 	glutDisplayFunc(GLUTCallbacks::Display);
+
+	//get keyboard input
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
 
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
+
+	//switch to identity matrix
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+
+	//set viewport to window size
+	glViewport(0, 0, 800, 800);
+	
+	//set the correct perspective
+	gluPerspective(45, 1, 0.5, 1000);
+
+	//switch to model view matrix to work w/ models
+	glMatrixMode(GL_MODELVIEW);
+
 	glutMainLoop();
 }
 
 HelloGL::~HelloGL(void)
 {
-
+	delete camera;
 }
 
 void HelloGL::Display()
@@ -38,6 +56,9 @@ void HelloGL::Display()
 
 void HelloGL::Update()
 {
+	//reset model view matrix so previous transformations aren't included
+	glLoadIdentity;
+	
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
 }
@@ -60,8 +81,6 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 		rotationPent -= 0.8f;
 	}
 
-	rotationTri = ((rotationTri % 360) + 360) % 360;
-
 	if (rotationTri >= 360.0f || rotationTri <= -360.0f)
 	{
 		rotationTri = 0.0f;
@@ -74,6 +93,21 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	{
 		rotationPent = 0.0f;
 	}
+}
+
+void HelloGL::CamInit()
+{
+	camera = new Camera();
+
+	camera->eye = SetVector3(0, 0, 1);
+	camera->center = SetVector3(0, 0, 0);
+	camera->up = SetVector3(0, 1, 0);
+}
+
+Vector3 HelloGL::SetVector3(float x, float y, float z)
+{
+	Vector3 vector3 = { x, y, z };
+	return vector3;
 }
 
 void HelloGL::DrawPolygon()
@@ -131,6 +165,7 @@ void HelloGL::RotateShape(float rotation, float direction, Shape drawShape)
 	switch (drawShape)
 	{
 	case Triangle:
+		glTranslatef(0, 0, -5);
 		DrawTriangle();
 		break;
 	case Rectangle:
