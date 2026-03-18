@@ -17,6 +17,16 @@ struct Camera
 	Vector3 eye, center, up;
 };
 
+struct Colour
+{
+	GLfloat r, g, b;
+};
+
+struct Vertex
+{
+	GLfloat x, y, z;
+};
+
 class HelloGL
 {
 public:
@@ -25,7 +35,17 @@ public:
 		Triangle, Rectangle, Pentagon
 	};
 
+	//camera pointer
 	Camera* camera;
+
+	//arrays to store 3d shape data
+	static Vertex cubeVertices[];
+	static Colour cubeColours[];
+	static GLushort cubeIndices[];
+
+	static Vertex pyramidVertices[];
+	static Colour pyramidColours[];
+	static GLushort pyramidIndices[];
 	
 	//constructor
 	HelloGL(int argc, char* argv[]);
@@ -47,6 +67,9 @@ public:
 	void DrawTriangle();
 	void DrawPentagon();
 
+	void DrawCube();
+	void DrawPyramid();
+
 	void RotateShape(float rotation, float direction, Shape drawShape);
 	
 private:
@@ -57,6 +80,6 @@ private:
 	float camMoveX;
 	float camMoveY;
 	float camMoveZ;
-	const float delta = 0.1f;
+	const float delta = 0.5f;
 };
 
