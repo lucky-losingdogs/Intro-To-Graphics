@@ -1,10 +1,15 @@
 #include "HelloGL.h"
+#include <iostream>
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
 	rotationTri = 0.0f;
 	rotationRect = 0.0f;
 	rotationPent = 0.0f;
+
+	camMoveX = 0.0f;
+	camMoveY = 0.0f;
+	camMoveZ = 0.0f;
 
 	CamInit();
 	
@@ -18,6 +23,9 @@ HelloGL::HelloGL(int argc, char* argv[])
 
 	//get keyboard input
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
+
+	//get special keyboard input
+	glutSpecialFunc(GLUTCallbacks::SpecialKeyboard);
 
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 
@@ -46,9 +54,14 @@ void HelloGL::Display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); //clears the scene
 
-	RotateShape(rotationTri, -1.0f, Triangle);
+	/*RotateShape(rotationTri, -1.0f, Triangle);
 	RotateShape(rotationRect, 1.0f, Rectangle);
-	RotateShape(rotationPent, -1.0f, Pentagon);
+	RotateShape(rotationPent, -1.0f, Pentagon);*/
+
+	glPushMatrix();
+		glTranslatef(0, 0, 1);
+		glutWireCube(0.1);
+	glPopMatrix();
 
 	glFlush(); //flushes the scene drawn to the graphics card
 	glutSwapBuffers();
@@ -57,7 +70,8 @@ void HelloGL::Display()
 void HelloGL::Update()
 {
 	//reset model view matrix so previous transformations aren't included
-	glLoadIdentity;
+	glLoadIdentity();
+	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
@@ -68,30 +82,41 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	//changes the key input to lower case to stop caps not working
 	key = (char)tolower(key);
 	
-	if (key == 'd')
+	switch (key)
 	{
-		rotationTri += 0.5f;
-		rotationRect += 0.2f;
-		rotationPent += 0.8f;
+	case 'd':
+		camera->eye = SetVector3(camMoveX, camera->eye.y, camera->eye.z);
+		camMoveX += delta;
+		break;
+	case 'a':
+		camera->eye = SetVector3(camMoveX, camera->eye.y, camera->eye.z);
+		camMoveX -= delta;
+		break;
+	case 'w':
+		camera->eye = SetVector3(camera->eye.x, camMoveY, camera->eye.z);
+		camMoveY -= delta;
+		break;
+	case 's':
+		camera->eye = SetVector3(camera->eye.x, camMoveY, camera->eye.z);
+		camMoveY += delta;
+		break;
 	}
-	if (key == 'a')
-	{
-		rotationTri -= 0.5f;
-		rotationRect -= 0.2f;
-		rotationPent -= 0.8f;
-	}
+}
 
-	if (rotationTri >= 360.0f || rotationTri <= -360.0f)
+void HelloGL::SpecialKeyboard(int key, int x, int y)
+{
+
+	std::cout << camera->eye.z << "\n";
+	switch (key)
 	{
-		rotationTri = 0.0f;
-	}
-	if (rotationRect >= 360.0f || rotationRect <= -360.0f)
-	{
-		rotationRect = 0.0f;
-	}
-	if (rotationPent >= 360.0f || rotationPent <= -360.0f)
-	{
-		rotationPent = 0.0f;
+	case GLUT_KEY_UP:
+		camera->eye = SetVector3(camera->eye.x, camera->eye.y, camMoveZ);
+		camMoveZ += delta;
+		break;
+	case GLUT_KEY_DOWN:
+		camera->eye = SetVector3(camera->eye.x, camera->eye.y, camMoveZ);
+		camMoveZ -= delta;
+		break;
 	}
 }
 
@@ -99,7 +124,7 @@ void HelloGL::CamInit()
 {
 	camera = new Camera();
 
-	camera->eye = SetVector3(0, 0, 1);
+	camera->eye = SetVector3(0, 0, -1);
 	camera->center = SetVector3(0, 0, 0);
 	camera->up = SetVector3(0, 1, 0);
 }

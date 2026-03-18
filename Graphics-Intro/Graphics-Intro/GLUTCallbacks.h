@@ -7,4 +7,5 @@ namespace GLUTCallbacks
 	void Display();
 	void Timer(int preferredRefresh);
 	void Keyboard(unsigned char key, int x, int y);
+	void SpecialKeyboard(int key, int x, int y);
 }

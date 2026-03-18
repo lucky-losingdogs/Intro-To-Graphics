@@ -36,4 +36,9 @@ namespace GLUTCallbacks
 	{
 		renderer->Keyboard(key, x, y);
 	}
+
+	void SpecialKeyboard(int key, int x, int y)
+	{
+		renderer->SpecialKeyboard(key, x, y);
+	}
 }

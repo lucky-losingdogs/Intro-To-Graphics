@@ -38,6 +38,7 @@ public:
 	void Update();
 
 	void Keyboard(unsigned char key, int x, int y);
+	void SpecialKeyboard(int key, int x, int y);
 
 	void CamInit();
 	Vector3 SetVector3(float x, float y, float z);
@@ -52,5 +53,10 @@ private:
 	float rotationTri;
 	float rotationRect;
 	float rotationPent;
+
+	float camMoveX;
+	float camMoveY;
+	float camMoveZ;
+	const float delta = 0.1f;
 };
 
