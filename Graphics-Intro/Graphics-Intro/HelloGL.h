@@ -4,31 +4,18 @@
 #include <gl/GLU.h>
 #include "GL/freeglut.h"
 #include "GLUTCallbacks.h"
+#include "Structures.h"
+#include "Cube.h"
 
 #define REFRESHRATE 16
 
-struct Vector3
-{
-	float x, y, z;
-};
-
-struct Camera
-{
-	Vector3 eye, center, up;
-};
-
-struct Colour
-{
-	GLfloat r, g, b;
-};
-
-struct Vertex
-{
-	GLfloat x, y, z;
-};
-
 class HelloGL
 {
+private:
+	static Vertex pyramidVertices[];
+	static Colour pyramidColours[];
+	static GLushort pyramidIndices[];
+
 public:
 	enum Shape
 	{
@@ -38,15 +25,8 @@ public:
 	//camera pointer
 	Camera* camera;
 
-	//arrays to store 3d shape data
-	static Vertex cubeVertices[];
-	static Colour cubeColours[];
-	static GLushort cubeIndices[];
+	Cube* cube[100];
 
-	static Vertex pyramidVertices[];
-	static Colour pyramidColours[];
-	static GLushort pyramidIndices[];
-	
 	//constructor
 	HelloGL(int argc, char* argv[]);
 
@@ -63,20 +43,10 @@ public:
 	void CamInit();
 	Vector3 SetVector3(float x, float y, float z);
 
-	void DrawPolygon();
-	void DrawTriangle();
-	void DrawPentagon();
-
-	void DrawCube();
+	void ShapeInit();
 	void DrawPyramid();
-
-	void RotateShape(float rotation, float direction, Shape drawShape);
 	
 private:
-	float rotationTri;
-	float rotationRect;
-	float rotationPent;
-
 	float camMoveX;
 	float camMoveY;
 	float camMoveZ;
