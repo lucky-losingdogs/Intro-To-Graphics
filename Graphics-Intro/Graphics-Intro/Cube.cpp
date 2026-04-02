@@ -1,31 +1,13 @@
 #include "Cube.h"
-#include <iostream>
+#include <sstream>
 
-Vertex Cube::indexedVertices[] =
-{
-	1, 1, 1,  -1, 1, 1, //v0-v1
-	-1,-1, 1,  1,-1, 1, //v2-v3
-	1, -1, -1,  1,1, -1, //v4-v5
-	-1, 1,-1,  -1,-1,-1, //v6-v7
-};
+Vertex* Cube::indexedVertices = nullptr;
+Colour* Cube::indexedColours = nullptr;
+GLushort* Cube::indices = nullptr;
 
-Colour Cube::indexedColors[] =
-{
-	1, 1, 1,  1, 1, 0, //v0-v1
-	1,0, 0,   1,0, 1, //v2-v3
-	0, 0, 1,   0, 1, 1, //v4-v5
-	0, 1, 0,   0, 0, 0, //v6-v7
-};
-
-GLushort Cube::indices[] =
-{
-	0, 1, 2,  2, 3, 0, // front
-	0, 3, 4,  4, 5, 0, // right
-	0, 5, 6,  6, 1, 0, // top
-	1, 6, 7,  7, 2, 1, // left
-	7, 4, 3,  3, 2, 7, // bottom
-	4, 7, 6,  6, 5, 4  // back
-};
+int Cube::numVertices = 0;
+int Cube::numColours = 0;
+int Cube::numIndices = 0;
 
 //cube constructor
 Cube::Cube(float x, float y, float z)
@@ -43,25 +25,74 @@ Cube::~Cube()
 
 }
 
+//populate the cube vertices, colour and indices arrays from a txt file
+//return true if successfully loaded, return false if not
+bool Cube::Load(char* path)
+{
+	ifstream inFile(path);
+	if (!inFile.good())
+	{
+		cerr << "Can't open text file " << path << endl;
+		return false;
+	}
+
+	//read first line for num of vertices
+	inFile >> numVertices;
+	indexedVertices = new Vertex[numVertices];
+	//populate vertices array from cube.txt
+	for (int i = 0; i < numVertices; i++)
+	{
+		float x, y, z;
+		inFile >> x >> y >> z;
+		indexedVertices[i] = { x, y, z };
+	}
+
+	//populate colours array
+	inFile >> numColours;
+	indexedColours = new Colour[numColours];
+	for (int i = 0; i < numColours; i++)
+	{
+		float r, g, b;
+		inFile >> r >> g >> b;
+		indexedColours[i] = { r, g, b };
+	}
+
+	//populate indices array
+	inFile >> numIndices;
+	indices = new GLushort[numIndices];
+	for (int i = 0; i < numIndices; i++)
+	{
+		GLushort ind = 0;
+		inFile >> ind;
+		indices[i] = ind;
+	}
+
+	inFile.close();
+	return true;
+}
+
 void Cube::Draw()
 {
-	//enabling new state
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
+	if (indexedVertices != nullptr && indexedColours != nullptr && indices != nullptr)
+	{
+		//enabling new state
+		glEnableClientState(GL_VERTEX_ARRAY);
+		glEnableClientState(GL_COLOR_ARRAY);
 
-	//set arrays that are being used to draw
-	glVertexPointer(3, GL_FLOAT, 0, indexedVertices);
-	glColorPointer(3, GL_FLOAT, 0, indexedColors);
+		//set arrays that are being used to draw
+		glVertexPointer(3, GL_FLOAT, 0, indexedVertices);
+		glColorPointer(3, GL_FLOAT, 0, indexedColours);
 
-	glPushMatrix();
-	glTranslatef(position.x, position.y, position.z);
-	glRotatef(rotation, 1, 0, 0);
-	glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, indices);
-	glPopMatrix();
+		glPushMatrix();
+		glTranslatef(position.x, position.y, position.z);
+		glRotatef(rotation, 1, 0, 0);
+		glDrawElements(GL_TRIANGLES, numIndices, GL_UNSIGNED_SHORT, indices);
+		glPopMatrix();
 
-	//disabling state
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
+		//disabling state
+		glDisableClientState(GL_COLOR_ARRAY);
+		glDisableClientState(GL_VERTEX_ARRAY);
+	}
 }
 
 void Cube::Update()

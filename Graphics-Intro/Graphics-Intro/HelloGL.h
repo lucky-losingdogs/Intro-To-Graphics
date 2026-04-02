@@ -6,6 +6,7 @@
 #include "GLUTCallbacks.h"
 #include "Structures.h"
 #include "Cube.h"
+#include "Object.h"
 
 #define REFRESHRATE 16
 
@@ -26,6 +27,7 @@ public:
 	Camera* camera;
 
 	Cube* cube[100];
+	Object* teapot;
 
 	//constructor
 	HelloGL(int argc, char* argv[]);

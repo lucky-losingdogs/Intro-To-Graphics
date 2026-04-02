@@ -1,6 +1,2 @@
-﻿  Cube.cpp
-  GLUTCallbacks.cpp
-  HelloGL.cpp
-  main.cpp
-  Generating Code...
+﻿  HelloGL.cpp
   Graphics-Intro.vcxproj -> C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe

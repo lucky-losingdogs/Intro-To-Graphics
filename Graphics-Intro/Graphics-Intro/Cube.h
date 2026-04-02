@@ -5,12 +5,18 @@
 #include "GL\freeglut.h"
 #include "Structures.h"
 
+#include <fstream>
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Cube
 {
 private:
-	static Vertex indexedVertices[];
-	static Colour indexedColors[];
-	static GLushort indices[];
+	static Vertex* indexedVertices;
+	static Colour* indexedColours;
+	static GLushort* indices;
+	static int numVertices, numColours, numIndices;
 
 	Vector3 position;
 	GLfloat rotation;
@@ -21,5 +27,5 @@ public:
 
 	void Draw();
 	void Update();
-
+	static bool Load(char* path);
 };

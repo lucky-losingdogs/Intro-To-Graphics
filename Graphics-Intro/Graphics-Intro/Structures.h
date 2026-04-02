@@ -19,3 +19,8 @@ struct Vertex
 {
 	GLfloat x, y, z;
 };
+
+struct Face
+{
+	GLfloat x, y, z;
+};

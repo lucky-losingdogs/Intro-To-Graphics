@@ -84,13 +84,12 @@ void HelloGL::Display()
 	//clear colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (int i = 0; i < 100; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
 		cube[i]->Draw();
-	}
+	}*/
 
-	/*glTranslatef(3, -1, 1);
-	DrawPyramid();*/
+	teapot->Draw();
 
 	glFlush(); //flushes the scene drawn to the graphics card
 	glutSwapBuffers();
@@ -102,10 +101,10 @@ void HelloGL::Update()
 	glLoadIdentity();
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	
-	for (int i = 0; i < 100; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
 		cube[i]->Update();
-	}
+	}*/
 
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
@@ -172,10 +171,14 @@ Vector3 HelloGL::SetVector3(float x, float y, float z)
 
 void HelloGL::ShapeInit()
 {
-	for (int i = 0; i < 100; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
+		Cube::Load((char*)"cube.txt");
 		cube[i] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
+	}*/
+
+	Object::Load((char*)"C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Obj\\teapot.obj");
+	teapot = new Object(1, 1, 1);
 }
 
 void HelloGL::DrawPyramid()
