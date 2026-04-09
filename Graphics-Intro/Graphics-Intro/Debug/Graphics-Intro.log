@@ -1,8 +1,2 @@
-﻿  Cube.cpp
-  GLUTCallbacks.cpp
-  HelloGL.cpp
-  main.cpp
-  Object.cpp
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\Object.cpp(94,22): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
+﻿  HelloGL.cpp
   Graphics-Intro.vcxproj -> C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe

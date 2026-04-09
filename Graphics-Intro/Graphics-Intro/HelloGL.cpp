@@ -168,7 +168,7 @@ void HelloGL::ShapeInit()
 		cube[i] = new Cube(((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}*/
 
-	Object::Load((char*)"C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Obj\\teapot.obj");
+	Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);
 }
 
