@@ -4,6 +4,7 @@
 #include <gl/GLU.h>
 #include "GL\freeglut.h"
 #include "Structures.h"
+#include "Vector3.h"
 
 #include <fstream>
 #include <iostream>

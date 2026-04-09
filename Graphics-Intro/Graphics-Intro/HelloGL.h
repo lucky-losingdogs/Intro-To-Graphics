@@ -7,6 +7,7 @@
 #include "Structures.h"
 #include "Cube.h"
 #include "Object.h"
+#include "Vector3.h"
 
 #define REFRESHRATE 16
 
@@ -43,7 +44,6 @@ public:
 	void SpecialKeyboard(int key, int x, int y);
 
 	void CamInit();
-	Vector3 SetVector3(float x, float y, float z);
 
 	void ShapeInit();
 	void DrawPyramid();

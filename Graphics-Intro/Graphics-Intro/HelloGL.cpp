@@ -99,6 +99,8 @@ void HelloGL::Update()
 {
 	//reset model view matrix so previous transformations aren't included
 	glLoadIdentity();
+
+	camera->center = Vector3::AddVector3(camera->eye, camera->forward);
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	
 	/*for (int i = 0; i < 100; i++)
@@ -119,20 +121,16 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case 'd':
-		camera->eye = SetVector3(camMoveX, camera->eye.y, camera->eye.z);
-		camMoveX += delta;
+		camera->eye.x += delta;
 		break;
 	case 'a':
-		camera->eye = SetVector3(camMoveX, camera->eye.y, camera->eye.z);
-		camMoveX -= delta;
+		camera->eye.x -= delta;
 		break;
 	case 'w':
-		camera->eye = SetVector3(camera->eye.x, camMoveY, camera->eye.z);
-		camMoveY -= delta;
+		camera->eye.y += delta;
 		break;
 	case 's':
-		camera->eye = SetVector3(camera->eye.x, camMoveY, camera->eye.z);
-		camMoveY += delta;
+		camera->eye.y -= delta;
 		break;
 	}
 }
@@ -143,12 +141,10 @@ void HelloGL::SpecialKeyboard(int key, int x, int y)
 	switch (key)
 	{
 	case GLUT_KEY_UP:
-		camera->eye = SetVector3(camera->eye.x, camera->eye.y, camMoveZ);
-		camMoveZ += delta;
+		camera->eye.z += camera->forward.z * delta;
 		break;
 	case GLUT_KEY_DOWN:
-		camera->eye = SetVector3(camera->eye.x, camera->eye.y, camMoveZ);
-		camMoveZ -= delta;
+		camera->eye.z -= camera->forward.z * delta;
 		break;
 	}
 }
@@ -158,15 +154,10 @@ void HelloGL::CamInit()
 	camera = new Camera();
 
 	//camera->eye = SetVector3(0, 0, -1);
-	camera->eye = SetVector3(5, 5, -5);
-	camera->center = SetVector3(0, 0, 0);
-	camera->up = SetVector3(0, 1, 0);
-}
-
-Vector3 HelloGL::SetVector3(float x, float y, float z)
-{
-	Vector3 vector3 = { x, y, z };
-	return vector3;
+	camera->eye = Vector3::SetVector3(5, 5, -5);
+	camera->center = Vector3::SetVector3(0, 0, 0);
+	camera->up = Vector3::SetVector3(0, 1, 0);
+	camera->forward = Vector3::SetVector3(0, 0, -1);
 }
 
 void HelloGL::ShapeInit()

@@ -1,13 +1,9 @@
 #pragma once
-
-struct Vector3
-{
-	float x, y, z;
-};
+#include "Vector3.h"
 
 struct Camera
 {
-	Vector3 eye, center, up;
+	Vector3 eye, center, up, forward;
 };
 
 struct Colour
