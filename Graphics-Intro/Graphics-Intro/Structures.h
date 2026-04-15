@@ -20,3 +20,11 @@ struct Face
 {
 	GLfloat x, y, z;
 };
+
+struct Mesh
+{
+	Vertex* vertices;
+	Colour* colours;
+	GLushort* indices;
+	int vertexCount, colourCount, indexCount;
+};

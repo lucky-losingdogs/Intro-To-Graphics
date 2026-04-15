@@ -6,7 +6,9 @@
 #include "GLUTCallbacks.h"
 #include "Structures.h"
 #include "Cube.h"
+#include "Pyramid.h"
 #include "Object.h"
+#include "MeshLoader.h"
 #include "Vector3.h"
 
 #define REFRESHRATE 16
@@ -19,15 +21,10 @@ private:
 	static GLushort pyramidIndices[];
 
 public:
-	enum Shape
-	{
-		Triangle, Rectangle, Pentagon
-	};
-
 	//camera pointer
 	Camera* camera;
 
-	Cube* cube[100];
+	SceneObject* objects[100];
 	Object* teapot;
 
 	//constructor
@@ -43,9 +40,10 @@ public:
 	void Keyboard(unsigned char key, int x, int y);
 	void SpecialKeyboard(int key, int x, int y);
 
-	void CamInit();
+	void InitCam();
 
-	void ShapeInit();
+	void InitObjects();
+	void InitGL(int argc, char* argv[]);
 	void DrawPyramid();
 	
 private:
