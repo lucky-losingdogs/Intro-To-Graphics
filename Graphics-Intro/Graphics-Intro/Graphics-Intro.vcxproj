@@ -131,6 +131,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Vector3.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -142,11 +143,15 @@
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="Structures.h" />
+    <ClInclude Include="Texture2D.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="cube.txt" />
     <Text Include="pyramid.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="penguins.raw" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

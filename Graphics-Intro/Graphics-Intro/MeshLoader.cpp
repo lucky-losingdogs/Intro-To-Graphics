@@ -7,6 +7,7 @@ namespace MeshLoader
 	void LoadVertices(ifstream& inFile, Mesh& mesh);
 	void LoadColours(ifstream& inFile, Mesh& mesh);
 	void LoadIndices(ifstream& inFile, Mesh& mesh);
+	void LoadTexCoords(ifstream& inFile, Mesh& mesh);
 
 	void LoadVertices(ifstream& inFile, Mesh& mesh)
 	{
@@ -41,6 +42,23 @@ namespace MeshLoader
 				inFile >> mesh.colours[i].r;
 				inFile >> mesh.colours[i].g;
 				inFile >> mesh.colours[i].b;
+			}
+		}
+	}
+
+	void LoadTexCoords(ifstream& inFile, Mesh& mesh)
+	{
+		inFile >> mesh.texCoordCount;
+
+		if (mesh.texCoordCount > 0)
+		{
+			mesh.texCoords = new TexCoord[mesh.texCoordCount];
+
+			//populate vertices array from file
+			for (int i = 0; i < mesh.texCoordCount; i++)
+			{
+				inFile >> mesh.texCoords[i].u;
+				inFile >> mesh.texCoords[i].v;
 			}
 		}
 	}
@@ -80,6 +98,8 @@ namespace MeshLoader
 		LoadVertices(inFile, *mesh);
 		LoadColours(inFile, *mesh);
 		LoadIndices(inFile, *mesh);
+
+		LoadTexCoords(inFile, *mesh);
 
 		return mesh;
 	}

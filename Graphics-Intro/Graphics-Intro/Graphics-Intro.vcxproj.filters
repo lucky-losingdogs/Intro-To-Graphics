@@ -42,6 +42,9 @@
     <ClCompile Include="Pyramid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HelloGL.h">
@@ -71,13 +74,21 @@
     <ClInclude Include="Pyramid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="cube.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="pyramid.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="cube.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="penguins.raw">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -21,10 +21,16 @@ struct Face
 	GLfloat x, y, z;
 };
 
+struct TexCoord
+{
+	GLfloat u, v;
+};
+
 struct Mesh
 {
 	Vertex* vertices;
 	Colour* colours;
 	GLushort* indices;
-	int vertexCount, colourCount, indexCount;
+	TexCoord* texCoords;
+	int vertexCount, colourCount, indexCount, texCoordCount;
 };

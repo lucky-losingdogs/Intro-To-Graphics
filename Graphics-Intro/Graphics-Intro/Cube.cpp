@@ -2,7 +2,7 @@
 
 
 //cube constructor
-Cube::Cube(Mesh* mesh, float x, float y, float z) : SceneObject(mesh, x, y, z)
+Cube::Cube(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh, texture, x, y, z)
 {
 	
 }

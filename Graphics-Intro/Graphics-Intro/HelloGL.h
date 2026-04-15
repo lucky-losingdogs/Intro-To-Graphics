@@ -15,11 +15,6 @@
 
 class HelloGL
 {
-private:
-	static Vertex pyramidVertices[];
-	static Colour pyramidColours[];
-	static GLushort pyramidIndices[];
-
 public:
 	//camera pointer
 	Camera* camera;
@@ -44,7 +39,6 @@ public:
 
 	void InitObjects();
 	void InitGL(int argc, char* argv[]);
-	void DrawPyramid();
 	
 private:
 	float camMoveX;

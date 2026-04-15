@@ -1,29 +1,6 @@
 #include "HelloGL.h"
 #include "Cube.h"
 
-Vertex HelloGL::pyramidVertices[] =
-{
-	-1, -1, 1,  1, -1, 1, //v0-v1
-	-1, -1, -1,  1, -1, -1, //v2-v3
-	0, 1, 0, //v4
-};
-
-Colour HelloGL::pyramidColours[] =
-{
-	1, 0, 1,  1, 1, 0, //v0-v1
-	1,0, 0,   1,0, 1, //v2-v3
-	1, 1, 1, //v4
-};
-
-GLushort HelloGL::pyramidIndices[] =
-{
-	1, 0, 2,  2, 3, 1, //bottom
-	0, 1, 4, //front
-	1, 3, 4, //right
-	3, 2, 4, //back
-	2, 0, 4, //left
-};
-
 HelloGL::HelloGL(int argc, char* argv[])
 {
 	InitGL(argc, argv);
@@ -140,6 +117,9 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//switch to model view matrix to work w/ models
 	glMatrixMode(GL_MODELVIEW);
 
+	//enable texturing
+	glEnable(GL_TEXTURE_2D);
+
 	//enable depth testing so overlapping triangles render correctly
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -148,6 +128,10 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//enable back face culling
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
+
+	//texture filtering
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void HelloGL::InitCam()
@@ -167,39 +151,21 @@ void HelloGL::InitCam()
 
 void HelloGL::InitObjects()
 {
-
 	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
 	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
-	
+	Texture2D* texture = new Texture2D();
+	texture->Load((char*)"penguins.raw", 512, 512);
+
 	for (int i = 0; i < 50; i++)
 	{
-		objects[i] = new Cube(cubeMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+		objects[i] = new Cube(cubeMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-	for (int i = 50; i < 100; i++)
+	/*for (int i = 50; i < 100; i++)
 	{
 		objects[i] = new Pyramid(pyramidMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
+	}*/
 
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/
-}
-
-void HelloGL::DrawPyramid()
-{
-	//enabling new state
-	glEnableClientState(GL_VERTEX_ARRAY);
-	glEnableClientState(GL_COLOR_ARRAY);
-
-	//set arrays that are being used to draw
-	glVertexPointer(3, GL_FLOAT, 0, pyramidVertices);
-	glColorPointer(3, GL_FLOAT, 0, pyramidColours);
-
-	glPushMatrix();
-	glDrawElements(GL_TRIANGLES, 18, GL_UNSIGNED_SHORT, pyramidIndices);
-	glPopMatrix();
-
-	//disabling state
-	glDisableClientState(GL_COLOR_ARRAY);
-	glDisableClientState(GL_VERTEX_ARRAY);
 }
