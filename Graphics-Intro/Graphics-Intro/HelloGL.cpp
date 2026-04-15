@@ -3,8 +3,8 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
+
 	InitGL(argc, argv);
-	
 	InitCam();
 	InitObjects();
 	
@@ -117,9 +117,6 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//switch to model view matrix to work w/ models
 	glMatrixMode(GL_MODELVIEW);
 
-	//enable texturing
-	glEnable(GL_TEXTURE_2D);
-
 	//enable depth testing so overlapping triangles render correctly
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -161,10 +158,10 @@ void HelloGL::InitObjects()
 		objects[i] = new Cube(cubeMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-	/*for (int i = 50; i < 100; i++)
+	for (int i = 50; i < 100; i++)
 	{
 		objects[i] = new Pyramid(pyramidMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}*/
+	}
 
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/

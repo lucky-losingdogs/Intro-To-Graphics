@@ -22,17 +22,25 @@ void SceneObject::Draw()
 	if (mesh->vertices != nullptr && mesh->colours != nullptr && mesh->indices != nullptr)
 	{
 		bool hasTexture = (texture != nullptr) && (mesh->texCoords != nullptr);
-
+		
 		if (hasTexture)
 		{
+			//enable texturing for objects with textures
+			glEnable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, texture->GetID());
 			glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 			glTexCoordPointer(2, GL_FLOAT, 0, mesh->texCoords);
 		}
 		else
 		{
+			glDisable(GL_TEXTURE_2D);
 			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		}
+
+		/*if (mesh->texCoords == nullptr)
+		{
+			cout << ("Cube has NO texCoords\n");
+		}*/
 		
 		//enabling new state
 		glEnableClientState(GL_VERTEX_ARRAY);
@@ -52,10 +60,9 @@ void SceneObject::Draw()
 		glDisableClientState(GL_COLOR_ARRAY);
 		glDisableClientState(GL_VERTEX_ARRAY);
 
-		if (hasTexture)
-		{
-			glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-		}
+		//disabling textures
+		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+		glDisable(GL_TEXTURE_2D);
 	}
 }
 

@@ -2,9 +2,6 @@
 
 Texture2D::Texture2D()
 {
-	ID = 0;
-	height = 0;
-	width = 0;
 }
 
 Texture2D::~Texture2D()

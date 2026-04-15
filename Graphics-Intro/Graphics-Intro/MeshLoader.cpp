@@ -8,6 +8,7 @@ namespace MeshLoader
 	void LoadColours(ifstream& inFile, Mesh& mesh);
 	void LoadIndices(ifstream& inFile, Mesh& mesh);
 	void LoadTexCoords(ifstream& inFile, Mesh& mesh);
+	bool CheckIfTextured(ifstream& inFile);
 
 	void LoadVertices(ifstream& inFile, Mesh& mesh)
 	{
@@ -48,6 +49,9 @@ namespace MeshLoader
 
 	void LoadTexCoords(ifstream& inFile, Mesh& mesh)
 	{
+		if (CheckIfTextured(inFile))
+			return;
+		
 		inFile >> mesh.texCoordCount;
 
 		if (mesh.texCoordCount > 0)
@@ -94,13 +98,16 @@ namespace MeshLoader
 			return nullptr;
 		}
 
-		//LOAD DATA USING METHODS ABOVE
 		LoadVertices(inFile, *mesh);
 		LoadColours(inFile, *mesh);
 		LoadIndices(inFile, *mesh);
-
 		LoadTexCoords(inFile, *mesh);
 
 		return mesh;
+	}
+
+	bool MeshLoader::CheckIfTextured(ifstream& inFile)
+	{
+		return inFile.eof();
 	}
 }
