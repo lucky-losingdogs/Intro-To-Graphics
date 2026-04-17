@@ -15,12 +15,18 @@ private:
 	GLuint ID;
 	int width, height;
 
+	//bitmap headers
+	BITMAPFILEHEADER bmFileHeader;
+	BITMAPINFOHEADER bmInfoHeader;
+
 public:
 	Texture2D();
 	~Texture2D();
 
 	bool Load(char* path, int width, int height);
+	bool LoadBMP(char* path);
 
+	void BindTextureID(int width, int height, char* tempTextureData);
 	GLuint GetID() const { return ID; }
 	int GetWidth() const { return width; }
 	int GetHeight() const { return height; }

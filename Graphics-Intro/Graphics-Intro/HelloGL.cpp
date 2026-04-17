@@ -150,12 +150,22 @@ void HelloGL::InitObjects()
 {
 	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
 	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
+
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
+	Texture2D* texture2 = new Texture2D();
+	texture2->LoadBMP((char*)"snail.bmp");
 
-	for (int i = 0; i < 50; i++)
+	//loadBitMap((char*)"snail.bmp", (char*)"snail.raw");
+
+	for (int i = 0; i < 25; i++)
 	{
 		objects[i] = new Cube(cubeMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
+	}
+
+	for (int i = 25; i < 50; i++)
+	{
+		objects[i] = new Cube(cubeMesh, texture2, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
 	for (int i = 50; i < 100; i++)

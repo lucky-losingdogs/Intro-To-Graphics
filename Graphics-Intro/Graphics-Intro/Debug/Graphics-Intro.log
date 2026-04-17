@@ -1,2 +1,5 @@
-﻿  MeshLoader.cpp
+﻿  main.cpp
+  Texture2D.cpp
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\Texture2D.cpp(85,24): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   Graphics-Intro.vcxproj -> C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe
