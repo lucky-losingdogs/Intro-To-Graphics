@@ -16,12 +16,6 @@
 class HelloGL
 {
 public:
-	//camera pointer
-	Camera* camera;
-
-	SceneObject* objects[100];
-	Object* teapot;
-
 	//constructor
 	HelloGL(int argc, char* argv[]);
 
@@ -39,11 +33,21 @@ public:
 
 	void InitObjects();
 	void InitGL(int argc, char* argv[]);
+	void InitLighting();
 	
 private:
 	float camMoveX;
 	float camMoveY;
 	float camMoveZ;
 	const float delta = 0.5f;
+
+	//camera pointer
+	Camera* camera;
+
+	SceneObject* objects[100];
+	Object* teapot;
+
+	Vector4* lightPosition;
+	Lighting* lightData;
 };
 

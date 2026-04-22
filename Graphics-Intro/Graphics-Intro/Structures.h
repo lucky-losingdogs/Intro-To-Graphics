@@ -11,6 +11,11 @@ struct Colour
 	GLfloat r, g, b;
 };
 
+struct Normal
+{
+	GLfloat x, y, z;
+};
+
 struct Vertex
 {
 	GLfloat x, y, z;
@@ -29,8 +34,24 @@ struct TexCoord
 struct Mesh
 {
 	Vertex* vertices;
-	Colour* colours;
+	Normal* normals;
 	GLushort* indices;
 	TexCoord* texCoords;
-	int vertexCount, colourCount, indexCount, texCoordCount;
+	int vertexCount, normalsCount, indexCount, texCoordCount;
+};
+
+struct Vector4
+{
+	GLfloat x, y, z, w;
+};
+
+struct Lighting
+{
+	Vector4 ambient, diffuse, specular;
+};
+
+struct Material
+{
+	Vector4 ambient, diffuse, specular;
+	GLfloat shininess;
 };

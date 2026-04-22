@@ -12,6 +12,7 @@ class SceneObject
 protected:
 	Mesh* mesh;
 	Texture2D* texture;
+	Material* material;
 
 	Vector3 position;
 	GLfloat rotation;
@@ -22,5 +23,6 @@ public:
 
 	virtual void Draw();
 	virtual void Update();
+	virtual void DefineMaterial();
 };
 

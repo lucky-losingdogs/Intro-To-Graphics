@@ -3,9 +3,9 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
-
 	InitGL(argc, argv);
 	InitCam();
+	InitLighting();
 	InitObjects();
 	
 	glutMainLoop();
@@ -40,6 +40,11 @@ void HelloGL::Update()
 	camera->center = Vector3::AddVector3(camera->eye, camera->forward);
 	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
 	
+	glLightfv(GL_LIGHT0, GL_AMBIENT, &(lightData->ambient.x));
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, &(lightData->diffuse.x));
+	glLightfv(GL_LIGHT0, GL_SPECULAR, &(lightData->specular.x));
+	glLightfv(GL_LIGHT0, GL_POSITION, &(lightPosition->x));
+
 	for (int i = 0; i < 100; i++)
 	{
 		objects[i]->Update();
@@ -129,6 +134,9 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//texture filtering
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 }
 
 void HelloGL::InitCam()
@@ -149,7 +157,6 @@ void HelloGL::InitCam()
 void HelloGL::InitObjects()
 {
 	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
-	Mesh* pyramidMesh = MeshLoader::Load((char*)"pyramid.txt");
 
 	Texture2D* texture = new Texture2D();
 	texture->Load((char*)"penguins.raw", 512, 512);
@@ -158,21 +165,39 @@ void HelloGL::InitObjects()
 
 	//loadBitMap((char*)"snail.bmp", (char*)"snail.raw");
 
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 50; i++)
 	{
 		objects[i] = new Cube(cubeMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-	for (int i = 25; i < 50; i++)
+	for (int i = 50; i < 100; i++)
 	{
 		objects[i] = new Cube(cubeMesh, texture2, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
 	}
 
-	for (int i = 50; i < 100; i++)
-	{
-		objects[i] = new Pyramid(pyramidMesh, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
-
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/
+}
+
+void HelloGL::InitLighting()
+{
+	lightPosition = new Vector4();
+	lightPosition->x = 0.0;
+	lightPosition->y = 0.0;
+	lightPosition->z = 1.0;
+	lightPosition->w = 0.0;
+
+	lightData = new Lighting();
+	lightData->ambient.x = 0.2;
+	lightData->ambient.y = 0.2;
+	lightData->ambient.z = 0.2;
+	lightData->ambient.w = 1.0;
+	lightData->diffuse.x = 0.8;
+	lightData->diffuse.y = 0.8;
+	lightData->diffuse.z = 0.8;
+	lightData->diffuse.w = 1.0;
+	lightData->specular.x = 0.2;
+	lightData->specular.y = 0.2;
+	lightData->specular.z = 0.2;
+	lightData->specular.w = 1.0;
 }

@@ -5,7 +5,7 @@ using namespace std;
 namespace MeshLoader
 {
 	void LoadVertices(ifstream& inFile, Mesh& mesh);
-	void LoadColours(ifstream& inFile, Mesh& mesh);
+	void LoadNormals(ifstream& inFile, Mesh& mesh);
 	void LoadIndices(ifstream& inFile, Mesh& mesh);
 	void LoadTexCoords(ifstream& inFile, Mesh& mesh);
 	bool CheckIfTextured(ifstream& inFile);
@@ -29,20 +29,20 @@ namespace MeshLoader
 		}
 	}
 
-	void LoadColours(ifstream& inFile, Mesh& mesh)
+	void LoadNormals(ifstream& inFile, Mesh& mesh)
 	{
-		inFile >> mesh.colourCount;
+		inFile >> mesh.normalsCount;
 
-		if (mesh.colourCount > 0)
+		if (mesh.normalsCount > 0)
 		{
-			mesh.colours = new Colour[mesh.colourCount];
+			mesh.normals = new Normal[mesh.normalsCount];
 
 			//populate vertices array from file
-			for (int i = 0; i < mesh.colourCount; i++)
+			for (int i = 0; i < mesh.normalsCount; i++)
 			{
-				inFile >> mesh.colours[i].r;
-				inFile >> mesh.colours[i].g;
-				inFile >> mesh.colours[i].b;
+				inFile >> mesh.normals[i].x;
+				inFile >> mesh.normals[i].y;
+				inFile >> mesh.normals[i].z;
 			}
 		}
 	}
@@ -99,7 +99,7 @@ namespace MeshLoader
 		}
 
 		LoadVertices(inFile, *mesh);
-		LoadColours(inFile, *mesh);
+		LoadNormals(inFile, *mesh);
 		LoadIndices(inFile, *mesh);
 		LoadTexCoords(inFile, *mesh);
 
