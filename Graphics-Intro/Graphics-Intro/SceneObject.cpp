@@ -68,6 +68,7 @@ void SceneObject::Update()
 	
 }
 
+//defines the material properties of the object and applies them to the current OpenGL state
 void SceneObject::DefineMaterial()
 {
 	material = new Material();

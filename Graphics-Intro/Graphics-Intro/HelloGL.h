@@ -9,7 +9,7 @@
 #include "Pyramid.h"
 #include "Object.h"
 #include "MeshLoader.h"
-#include "Vector3.h"
+#include "Text.h"
 
 #define REFRESHRATE 16
 
@@ -29,16 +29,26 @@ public:
 	void Keyboard(unsigned char key, int x, int y);
 	void SpecialKeyboard(int key, int x, int y);
 
-	void InitCam();
-
 	void InitObjects();
 	void InitGL(int argc, char* argv[]);
 	void InitLighting();
+	void InitCam();
+	void NewText(const char* text, Vector3 position, Colour colour);
+
+	struct Sphere
+	{
+		float radius;
+		Vector3 position;
+	};
+
+	Sphere sphere1;
+	Sphere sphere2;
+
+	void initSpheres();
+	void drawSpheres(float distance, bool distanceSquared);
+	float calculateDistanceSquared(Sphere s1, Sphere s2);
 	
 private:
-	float camMoveX;
-	float camMoveY;
-	float camMoveZ;
 	const float delta = 0.5f;
 
 	//camera pointer

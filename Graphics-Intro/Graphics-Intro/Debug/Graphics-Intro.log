@@ -1,8 +1,12 @@
-﻿  SceneObject.cpp
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(74,24): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(74,51): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(74,79): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(76,24): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(76,51): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\SceneObject.cpp(76,79): warning C4305: '=': truncation from 'double' to 'GLfloat'
+﻿  HelloGL.cpp
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(56,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(215,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(216,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(217,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(219,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(220,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(221,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(223,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(224,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
+C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(225,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
   Graphics-Intro.vcxproj -> C:\Users\a011385p\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe

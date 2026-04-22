@@ -7,6 +7,7 @@ HelloGL::HelloGL(int argc, char* argv[])
 	InitCam();
 	InitLighting();
 	InitObjects();
+	initSpheres();
 	
 	glutMainLoop();
 }
@@ -21,15 +22,72 @@ void HelloGL::Display()
 	//clear colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	for (int i = 0; i < 100; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
 		objects[i]->Draw();
-	}
+	}*/
 
 	//teapot->Draw();
 
+	//create a new text object in the center of the camera (follows cam movement)
+	//NewText("Hello OpenGL", Vector3::SetVector3(camera->center.x, camera->center.y, camera->center.z), Colour{ 0.0f, 0.0f, 0.0f });
+
+
+	float distance = calculateDistanceSquared(sphere1, sphere2);
+	drawSpheres(distance, true);
+
 	glFlush(); //flushes the scene drawn to the graphics card
 	glutSwapBuffers();
+}
+
+void HelloGL::initSpheres()
+{
+	sphere1.radius = 1.0f;
+	sphere2.radius = 1.0f;
+
+	sphere1.position.x = -1.5f;
+	sphere2.position.x = 1.5f;
+}
+
+void HelloGL::drawSpheres(float distance, bool distanceSquared)
+{
+	float radiusDistance;
+	if (distanceSquared)
+		radiusDistance = pow(sphere1.radius + sphere2.radius, 2);
+	else
+		radiusDistance = sphere1.radius + sphere2.radius;
+
+	//Draw Sphere 1
+	glPushMatrix();
+
+	//change the colour of the first sphere if it collides with the second
+	if (distance <= radiusDistance)
+		glColor3f(1, 0, 0);
+	else
+		glColor3f(0, 0, 1);
+
+	glTranslatef(sphere1.position.x, sphere1.position.y, sphere1.position.z);
+	glBegin(GL_POINTS);
+	glVertex3f(0.0f, 0.0f, 0.0f);
+	glEnd();
+	glutWireSphere(sphere1.radius, 20, 20);
+	glPopMatrix();
+
+	//Draw Sphere 2
+	glPushMatrix();
+	glColor3f(0, 1, 0);
+	glTranslatef(sphere2.position.x, sphere2.position.y, sphere2.position.z);
+	glBegin(GL_POINTS);
+	glVertex3f(0.0f, 0.0f, 0.0f);
+	glEnd();
+	glutWireSphere(sphere2.radius, 20, 20);
+	glPopMatrix();
+}
+
+float HelloGL::calculateDistanceSquared(Sphere s1, Sphere s2)
+{
+	float distance = ((s1.position.x - s2.position.x) * (s1.position.x - s2.position.x)) + ((s1.position.y - s2.position.y) * (s1.position.y - s2.position.y)) + ((s1.position.z - s2.position.z) * (s1.position.z - s2.position.z));
+	return distance;
 }
 
 void HelloGL::Update()
@@ -37,8 +95,7 @@ void HelloGL::Update()
 	//reset model view matrix so previous transformations aren't included
 	glLoadIdentity();
 
-	camera->center = Vector3::AddVector3(camera->eye, camera->forward);
-	gluLookAt(camera->eye.x, camera->eye.y, camera->eye.z, camera->center.x, camera->center.y, camera->center.z, camera->up.x, camera->up.y, camera->up.z);
+	camera->Update();
 	
 	glLightfv(GL_LIGHT0, GL_AMBIENT, &(lightData->ambient.x));
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, &(lightData->diffuse.x));
@@ -59,36 +116,16 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	//changes the key input to lower case to stop caps not working 
 	key = (char)tolower(key);
 	
-	//moves the camera along X or Y axis depending on keyboard input
-	switch (key)
-	{
-	case 'd':
-		camera->eye.x += delta;
-		break;
-	case 'a':
-		camera->eye.x -= delta;
-		break;
-	case 'w':
-		camera->eye.y += delta;
-		break;
-	case 's':
-		camera->eye.y -= delta;
-		break;
+	camera->MoveCamera(key, delta);
+
+	if (key == 'm') {
+		sphere1.position.x = sphere1.position.x + 0.1f;
 	}
 }
 
 void HelloGL::SpecialKeyboard(int key, int x, int y)
 {
-	//moves the camera along Z axis if keyboard input is special keys (up and down arrow keys)
-	switch (key)
-	{
-	case GLUT_KEY_UP:
-		camera->eye.z += camera->forward.z * delta;
-		break;
-	case GLUT_KEY_DOWN:
-		camera->eye.z -= camera->forward.z * delta;
-		break;
-	}
+	camera->MoveCamera(key, delta);
 }
 
 void HelloGL::InitGL(int argc, char* argv[])
@@ -135,23 +172,9 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
+	//enable lighting and the first light source
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
-}
-
-void HelloGL::InitCam()
-{
-	camMoveX = 0.0f;
-	camMoveY = 0.0f;
-	camMoveZ = 0.0f;
-	
-	camera = new Camera();
-
-	//camera->eye = SetVector3(0, 0, -1);
-	camera->eye = Vector3::SetVector3(5, 5, -5);
-	camera->center = Vector3::SetVector3(0, 0, 0);
-	camera->up = Vector3::SetVector3(0, 1, 0);
-	camera->forward = Vector3::SetVector3(0, 0, -1);
 }
 
 void HelloGL::InitObjects()
@@ -179,6 +202,7 @@ void HelloGL::InitObjects()
 	teapot = new Object(1, 1, 1);*/
 }
 
+//initialise the lighting properties of the scene
 void HelloGL::InitLighting()
 {
 	lightPosition = new Vector4();
@@ -200,4 +224,15 @@ void HelloGL::InitLighting()
 	lightData->specular.y = 0.2;
 	lightData->specular.z = 0.2;
 	lightData->specular.w = 1.0;
+}
+
+void HelloGL::InitCam()
+{
+	camera = new Camera;
+}
+
+//make a new text object
+void HelloGL::NewText(const char* text, Vector3 position, Colour colour)
+{
+	Text* newText = new Text(text, position, colour);
 }
