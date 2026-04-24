@@ -61,7 +61,11 @@ void HelloGL::Update()
 		}
 	}
 
-	CheckClickObject();
+	SceneObject* clickedObj = CheckClickObject();
+	if (clickedObj != nullptr)
+	{
+		clickedObj->OnClick();
+	}
 
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
@@ -84,6 +88,7 @@ void HelloGL::MouseClick(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
+		system("CLS");
 		//getting cursor position
 		mousePos->x = x;
 		mousePos->y = y;
@@ -152,7 +157,8 @@ void HelloGL::InitObjects()
 	Texture2D* texture2 = new Texture2D();
 	texture2->LoadBMP((char*)"snail.bmp");
 
-	objects.push_back(new Cube(cubeMesh, texture, 0, 0, 0));
+	objects.push_back(new Cube(cubeMesh, texture, 1.5f, 0, 5));
+	objects.push_back(new Cube(cubeMesh, texture2, 1, 0, 35));
 
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/
@@ -218,12 +224,13 @@ SceneObject* HelloGL::CheckClickObject()
 	//make a ray and pass mouse pos
 	Ray ray(mousePos->x, mousePos->y);
 
+	float closestObjDistance = 0;
+	float newClosestObj = -1;
+
 	SceneObject* closestObj = nullptr;
 	for (int i = 0; i < objects.size(); i++)
 	{
 		AABBCollider bounds = objects[i]->DefineBounds();
-		float closestObjDistance = 0;
-		float newClosestObj = 0;
 
 		if (ray.RayIntersectsAABB(ray, bounds, newClosestObj))
 		{
@@ -231,11 +238,10 @@ SceneObject* HelloGL::CheckClickObject()
 			{
 				closestObjDistance = newClosestObj;
 				closestObj = objects[i];
-				std::cout << "Clicked object!\n";
+				std::cout << "Clicked object!" << i << "\n";
+				break;
 			}
 		}
-		cout << closestObjDistance;
-		cout << newClosestObj;
 	}
 
 	if (closestObj != nullptr)

@@ -12,6 +12,7 @@ SceneObject::SceneObject(Mesh* _mesh, Texture2D* _texture, float x, float y, flo
 	position.z = z;
 
 	rotation = 0;
+	clicked = false;
 }
 
 SceneObject::~SceneObject()
@@ -47,7 +48,8 @@ void SceneObject::Draw()
 		glVertexPointer(3, GL_FLOAT, 0, mesh->vertices);
 		glNormalPointer(GL_FLOAT, 0, mesh->normals);
 
-		DefineMaterial();
+		if (!clicked)
+			DefineMaterial();
 
 		glPushMatrix();
 		glTranslatef(position.x, position.y, position.z);
@@ -99,4 +101,23 @@ void SceneObject::CheckCollision(SceneObject *other)
 AABBCollider SceneObject::DefineBounds()
 {
 	return AABBCollider(mesh, position);
+}
+
+void SceneObject::OnClick()
+{
+	clicked = true;
+	
+	material = new Material();
+	material->ambient.x = 0; material->ambient.y = 0; material->ambient.z = 0;
+	material->ambient.w = 1.0;
+	material->diffuse.x = 0; material->diffuse.y = 0; material->diffuse.z = 0;
+	material->diffuse.w = 1.0;
+	material->specular.x = 1.0; material->specular.y = 1.0; material->specular.z = 1.0;
+	material->specular.w = 1.0;
+	material->shininess = 100.0f;
+
+	glMaterialfv(GL_FRONT, GL_AMBIENT, &(material->ambient.x));
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, &(material->diffuse.x));
+	glMaterialfv(GL_FRONT, GL_SPECULAR, &(material->specular.x));
+	glMaterialf(GL_FRONT, GL_SHININESS, material->shininess);
 }

@@ -27,8 +27,10 @@ public:
 
 	virtual void CheckCollision(SceneObject* other);
 	virtual AABBCollider DefineBounds();
+	virtual void OnClick();
 
 	Collider* collider;
 	Vector3 position;
+	bool clicked;
 };
 
