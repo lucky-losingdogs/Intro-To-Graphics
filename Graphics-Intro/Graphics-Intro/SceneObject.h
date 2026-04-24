@@ -4,8 +4,9 @@
 #include <gl/GLU.h>
 #include "GL\freeglut.h"
 #include "Structures.h"
-#include "Vector3.h"
 #include "Texture2D.h"
+#include "Collider.h"
+#include <vector>
 
 class SceneObject
 {
@@ -14,7 +15,6 @@ protected:
 	Texture2D* texture;
 	Material* material;
 
-	Vector3 position;
 	GLfloat rotation;
 
 public:
@@ -24,5 +24,11 @@ public:
 	virtual void Draw();
 	virtual void Update();
 	virtual void DefineMaterial();
+
+	virtual void CheckCollision(SceneObject* other);
+	virtual AABBCollider DefineBounds();
+
+	Collider* collider;
+	Vector3 position;
 };
 

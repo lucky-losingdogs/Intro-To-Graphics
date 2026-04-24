@@ -15,5 +15,6 @@ Cube::~Cube()
 
 void Cube::Update()
 {
+	SceneObject::Update();
 	rotation += 0.5f;
 }

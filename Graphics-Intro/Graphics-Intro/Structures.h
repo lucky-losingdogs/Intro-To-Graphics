@@ -2,6 +2,11 @@
 #include "Vector3.h"
 #include "Camera.h"
 
+struct Vector2
+{
+	float x, y;
+};
+
 struct Colour
 {
 	GLfloat r, g, b;

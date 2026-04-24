@@ -1,50 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\",
+  "WorkspaceRootPath": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\MeshLoader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\SceneObject.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\SceneObject.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Structures.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Structures.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Text.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Camera.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Camera.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Ray.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Text.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Ray.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\MeshLoader.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Collider.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Collider.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,149 +42,119 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Text.cpp",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp",
-              "RelativeDocumentMoniker": "Graphics-Intro\\Text.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp",
-              "RelativeToolTip": "Graphics-Intro\\Text.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-22T12:05:55.941Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Text.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\Text.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.h",
-              "RelativeToolTip": "Graphics-Intro\\Text.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-22T12:04:59.41Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Camera.cpp",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.cpp",
-              "RelativeDocumentMoniker": "Graphics-Intro\\Camera.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.cpp",
-              "RelativeToolTip": "Graphics-Intro\\Camera.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-22T11:19:15.241Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Camera.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\Camera.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Camera.h",
-              "RelativeToolTip": "Graphics-Intro\\Camera.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-22T11:16:58.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Structures.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Structures.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\Structures.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Structures.h",
-              "RelativeToolTip": "Graphics-Intro\\Structures.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-22T10:21:30.629Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SceneObject.cpp",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp",
-              "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp",
-              "RelativeToolTip": "Graphics-Intro\\SceneObject.cpp",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEYAAABcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-15T11:24:17.621Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SceneObject.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h",
-              "RelativeToolTip": "Graphics-Intro\\SceneObject.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-15T14:09:13.469Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "HelloGL.cpp",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
               "RelativeToolTip": "Graphics-Intro\\HelloGL.cpp",
-              "ViewState": "AgIAABEAAAAAAAAAAAAAACoAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAIwD8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-03-05T18:21:42.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HelloGL.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h",
-              "RelativeToolTip": "Graphics-Intro\\HelloGL.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAADAAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-03-05T18:19:53.959Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "MeshLoader.cpp",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.cpp",
-              "RelativeDocumentMoniker": "Graphics-Intro\\MeshLoader.cpp",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.cpp",
-              "RelativeToolTip": "Graphics-Intro\\MeshLoader.cpp",
-              "ViewState": "AgIAABQAAAAAAAAAAAAAAGUAAAAJAAAAAAAAAA==",
+              "Title": "SceneObject.cpp",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp",
+              "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.cpp",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp",
+              "RelativeToolTip": "Graphics-Intro\\SceneObject.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-04-15T09:06:38.586Z",
+              "WhenOpened": "2026-04-15T11:24:17.621Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MeshLoader.h",
-              "DocumentMoniker": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.h",
-              "RelativeDocumentMoniker": "Graphics-Intro\\MeshLoader.h",
-              "ToolTip": "C:\\Users\\a011385p\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\MeshLoader.h",
-              "RelativeToolTip": "Graphics-Intro\\MeshLoader.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SceneObject.h",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h",
+              "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.h",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h",
+              "RelativeToolTip": "Graphics-Intro\\SceneObject.h",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAMwBsAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-15T14:18:56.515Z"
+              "WhenOpened": "2026-04-22T18:28:34.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Ray.h",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.h",
+              "RelativeDocumentMoniker": "Graphics-Intro\\Ray.h",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.h",
+              "RelativeToolTip": "Graphics-Intro\\Ray.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-23T01:03:01.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Ray.cpp",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.cpp",
+              "RelativeDocumentMoniker": "Graphics-Intro\\Ray.cpp",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Ray.cpp",
+              "RelativeToolTip": "Graphics-Intro\\Ray.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-24T03:28:57.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "HelloGL.h",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h",
+              "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.h",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h",
+              "RelativeToolTip": "Graphics-Intro\\HelloGL.h",
+              "ViewState": "AgIAACkAAAAAAAAAAAAIwDMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-22T18:47:31.785Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Collider.h",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Collider.h",
+              "RelativeDocumentMoniker": "Graphics-Intro\\Collider.h",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Collider.h",
+              "RelativeToolTip": "Graphics-Intro\\Collider.h",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2026-04-22T17:41:05.309Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Text.cpp",
+              "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp",
+              "RelativeDocumentMoniker": "Graphics-Intro\\Text.cpp",
+              "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Text.cpp",
+              "RelativeToolTip": "Graphics-Intro\\Text.cpp",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAA4AAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-22T12:05:55.941Z",
+              "EditorCaption": ""
             }
           ]
         }

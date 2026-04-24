@@ -5,9 +5,9 @@ HelloGL::HelloGL(int argc, char* argv[])
 {
 	InitGL(argc, argv);
 	InitCam();
+	InitMouse();
 	InitLighting();
 	InitObjects();
-	initSpheres();
 	
 	glutMainLoop();
 }
@@ -22,72 +22,18 @@ void HelloGL::Display()
 	//clear colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	/*for (int i = 0; i < 100; i++)
+	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Draw();
-	}*/
+	}
 
 	//teapot->Draw();
 
 	//create a new text object in the center of the camera (follows cam movement)
-	//NewText("Hello OpenGL", Vector3::SetVector3(camera->center.x, camera->center.y, camera->center.z), Colour{ 0.0f, 0.0f, 0.0f });
-
-
-	float distance = calculateDistanceSquared(sphere1, sphere2);
-	drawSpheres(distance, true);
+	//NewText("Hello OpenGL", Vector3::SetVector3(camera->center.x, camera->center.y, camera->center.z), Colour{ 1.0f, 1.0f, 1.0f });
 
 	glFlush(); //flushes the scene drawn to the graphics card
 	glutSwapBuffers();
-}
-
-void HelloGL::initSpheres()
-{
-	sphere1.radius = 1.0f;
-	sphere2.radius = 1.0f;
-
-	sphere1.position.x = -1.5f;
-	sphere2.position.x = 1.5f;
-}
-
-void HelloGL::drawSpheres(float distance, bool distanceSquared)
-{
-	float radiusDistance;
-	if (distanceSquared)
-		radiusDistance = pow(sphere1.radius + sphere2.radius, 2);
-	else
-		radiusDistance = sphere1.radius + sphere2.radius;
-
-	//Draw Sphere 1
-	glPushMatrix();
-
-	//change the colour of the first sphere if it collides with the second
-	if (distance <= radiusDistance)
-		glColor3f(1, 0, 0);
-	else
-		glColor3f(0, 0, 1);
-
-	glTranslatef(sphere1.position.x, sphere1.position.y, sphere1.position.z);
-	glBegin(GL_POINTS);
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glEnd();
-	glutWireSphere(sphere1.radius, 20, 20);
-	glPopMatrix();
-
-	//Draw Sphere 2
-	glPushMatrix();
-	glColor3f(0, 1, 0);
-	glTranslatef(sphere2.position.x, sphere2.position.y, sphere2.position.z);
-	glBegin(GL_POINTS);
-	glVertex3f(0.0f, 0.0f, 0.0f);
-	glEnd();
-	glutWireSphere(sphere2.radius, 20, 20);
-	glPopMatrix();
-}
-
-float HelloGL::calculateDistanceSquared(Sphere s1, Sphere s2)
-{
-	float distance = ((s1.position.x - s2.position.x) * (s1.position.x - s2.position.x)) + ((s1.position.y - s2.position.y) * (s1.position.y - s2.position.y)) + ((s1.position.z - s2.position.z) * (s1.position.z - s2.position.z));
-	return distance;
 }
 
 void HelloGL::Update()
@@ -102,10 +48,20 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, &(lightData->specular.x));
 	glLightfv(GL_LIGHT0, GL_POSITION, &(lightPosition->x));
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Update();
 	}
+
+	for (int i = 0; i < objects.size(); i++)
+	{
+		for (int j = i + 1; j < objects.size(); j++)
+		{
+			objects[i]->CheckCollision(objects[j]);
+		}
+	}
+
+	CheckClickObject();
 
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
@@ -117,10 +73,6 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 	key = (char)tolower(key);
 	
 	camera->MoveCamera(key, delta);
-
-	if (key == 'm') {
-		sphere1.position.x = sphere1.position.x + 0.1f;
-	}
 }
 
 void HelloGL::SpecialKeyboard(int key, int x, int y)
@@ -128,13 +80,24 @@ void HelloGL::SpecialKeyboard(int key, int x, int y)
 	camera->MoveCamera(key, delta);
 }
 
+void HelloGL::MouseClick(int button, int state, int x, int y)
+{
+	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+	{
+		//getting cursor position
+		mousePos->x = x;
+		mousePos->y = y;
+	}
+}
+
+
 void HelloGL::InitGL(int argc, char* argv[])
 {
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
 
-	glutInitWindowSize(800, 800);
+	glutInitWindowSize(windowWidth, windowHeight);
 	glutCreateWindow("Best OpenGL In The World");
 	glutDisplayFunc(GLUTCallbacks::Display);
 
@@ -143,6 +106,9 @@ void HelloGL::InitGL(int argc, char* argv[])
 
 	//get special keyboard input
 	glutSpecialFunc(GLUTCallbacks::SpecialKeyboard);
+
+	//get mouse click input
+	glutMouseFunc(GLUTCallbacks::MouseClick);
 
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 
@@ -186,17 +152,7 @@ void HelloGL::InitObjects()
 	Texture2D* texture2 = new Texture2D();
 	texture2->LoadBMP((char*)"snail.bmp");
 
-	//loadBitMap((char*)"snail.bmp", (char*)"snail.raw");
-
-	for (int i = 0; i < 50; i++)
-	{
-		objects[i] = new Cube(cubeMesh, texture, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
-
-	for (int i = 50; i < 100; i++)
-	{
-		objects[i] = new Cube(cubeMesh, texture2, ((rand() % 400) / 10.0f) - 20.0f, ((rand() % 200) / 10.0f) - 10.0f, -(rand() % 1000) / 10.0f);
-	}
+	objects.push_back(new Cube(cubeMesh, texture, 0, 0, 0));
 
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/
@@ -231,8 +187,59 @@ void HelloGL::InitCam()
 	camera = new Camera;
 }
 
+void HelloGL::InitMouse()
+{
+	mousePos = new Vector2;
+}
+
 //make a new text object
 void HelloGL::NewText(const char* text, Vector3 position, Colour colour)
 {
 	Text* newText = new Text(text, position, colour);
+}
+
+SceneObject* HelloGL::GetObjectBounds(Vector3 cursor)
+{
+	for (int i = 0; i < objects.size(); i++)
+	{
+		AABBCollider bounds = objects[i]->DefineBounds();
+
+		if (cursor.x >= bounds.min.x && cursor.x <= bounds.max.x && cursor.y >= bounds.min.y && cursor.y <= bounds.max.y)
+		{
+			return objects[i];
+		}
+	}
+
+	return nullptr;
+}
+
+SceneObject* HelloGL::CheckClickObject()
+{
+	//make a ray and pass mouse pos
+	Ray ray(mousePos->x, mousePos->y);
+
+	SceneObject* closestObj = nullptr;
+	for (int i = 0; i < objects.size(); i++)
+	{
+		AABBCollider bounds = objects[i]->DefineBounds();
+		float closestObjDistance = 0;
+		float newClosestObj = 0;
+
+		if (ray.RayIntersectsAABB(ray, bounds, newClosestObj))
+		{
+			if (newClosestObj < closestObjDistance)
+			{
+				closestObjDistance = newClosestObj;
+				closestObj = objects[i];
+				std::cout << "Clicked object!\n";
+			}
+		}
+		cout << closestObjDistance;
+		cout << newClosestObj;
+	}
+
+	if (closestObj != nullptr)
+		return closestObj;
+	else
+		return nullptr;
 }

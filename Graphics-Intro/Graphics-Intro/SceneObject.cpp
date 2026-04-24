@@ -5,6 +5,8 @@ SceneObject::SceneObject(Mesh* _mesh, Texture2D* _texture, float x, float y, flo
 	mesh = _mesh;
 	texture = _texture;
 
+	collider = new SphereCollider(1.0f, position);
+
 	position.x = x;
 	position.y = y;
 	position.z = z;
@@ -14,7 +16,7 @@ SceneObject::SceneObject(Mesh* _mesh, Texture2D* _texture, float x, float y, flo
 
 SceneObject::~SceneObject()
 {
-
+	delete collider;
 }
 
 void SceneObject::Draw()
@@ -65,7 +67,7 @@ void SceneObject::Draw()
 
 void SceneObject::Update()
 {
-	
+	collider->position = position;
 }
 
 //defines the material properties of the object and applies them to the current OpenGL state
@@ -84,4 +86,17 @@ void SceneObject::DefineMaterial()
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, &(material->diffuse.x));
 	glMaterialfv(GL_FRONT, GL_SPECULAR, &(material->specular.x));
 	glMaterialf(GL_FRONT, GL_SHININESS, material->shininess);
+}
+
+void SceneObject::CheckCollision(SceneObject *other)
+{
+	if (collider->Intersects(*other->collider))
+	{
+		cout << "colliding";
+	}
+}
+
+AABBCollider SceneObject::DefineBounds()
+{
+	return AABBCollider(mesh, position);
 }

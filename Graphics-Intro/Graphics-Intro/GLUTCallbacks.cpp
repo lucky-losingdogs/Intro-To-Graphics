@@ -41,4 +41,9 @@ namespace GLUTCallbacks
 	{
 		renderer->SpecialKeyboard(key, x, y);
 	}
+
+	void MouseClick(int button, int state, int x, int y)
+	{
+		renderer->MouseClick(button, state, x, y);
+	}
 }
