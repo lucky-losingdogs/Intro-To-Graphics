@@ -12,6 +12,7 @@
 #include "Text.h"
 #include "Ray.h"
 #include <vector>
+#include "LinkedList.h"
 
 #define REFRESHRATE 16
 
@@ -56,5 +57,8 @@ private:
 
 	Vector4* lightPosition;
 	Lighting* lightData;
+
+	LinkedList* list = new LinkedList();
+	LinkedNode* head = nullptr;
 };
 

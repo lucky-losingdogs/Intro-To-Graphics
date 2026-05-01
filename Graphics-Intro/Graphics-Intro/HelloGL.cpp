@@ -3,6 +3,13 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
+	list->MakeNode(&head, 2);
+	list->InsertFirst(&head, 167);
+	list->InsertAfter(head->nextNode, 24);
+	list->PrintList(head);
+	list->Append(head, 90);
+	list->PrintList(head);
+
 	InitGL(argc, argv);
 	InitCam();
 	InitMouse();
