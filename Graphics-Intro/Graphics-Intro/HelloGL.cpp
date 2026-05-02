@@ -3,12 +3,20 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
-	list->MakeNode(&head, 2);
-	list->InsertFirst(&head, 167);
-	list->InsertAfter(head->nextNode, 24);
-	list->PrintList(head);
-	list->Append(head, 90);
-	list->PrintList(head);
+	tree->MakeHead(&treeHead, 67);
+	tree->PrintPreOrder(treeHead);
+	cout << "\n----------\n";
+	tree->InsertFirst(&treeHead, 99);
+	tree->InsertAfter(treeHead->rightNode, 2000, true);
+	tree->InsertAfter(treeHead, 2000, true);
+	tree->InsertAfter(treeHead->leftNode, 23, false);
+	tree->InsertAfter(treeHead->leftNode->leftNode, 50, true);
+	tree->PrintPreOrder(treeHead);
+	cout << "\n----------\n";
+	cout << "Deleting tree\n";
+	tree->DeleteTree(&treeHead);
+	tree->PrintPreOrder(treeHead);
+	cout << "\n----------\n";
 
 	InitGL(argc, argv);
 	InitCam();

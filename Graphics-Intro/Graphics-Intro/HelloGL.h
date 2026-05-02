@@ -13,6 +13,7 @@
 #include "Ray.h"
 #include <vector>
 #include "LinkedList.h"
+#include "BinaryTree.h"
 
 #define REFRESHRATE 16
 
@@ -58,7 +59,9 @@ private:
 	Vector4* lightPosition;
 	Lighting* lightData;
 
-	LinkedList* list = new LinkedList();
-	LinkedNode* head = nullptr;
+	LinkedList<SceneObject>* list = new LinkedList<SceneObject>();
+	LinkedNode<SceneObject>* listHead = nullptr;
+	BinaryTree<int>* tree = new BinaryTree<int>();
+	TreeNode<int>* treeHead = nullptr;
 };
 
