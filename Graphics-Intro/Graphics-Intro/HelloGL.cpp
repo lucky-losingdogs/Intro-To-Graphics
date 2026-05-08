@@ -23,15 +23,17 @@ void HelloGL::Display()
 	//clear colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	//display skybox
+	glPushMatrix();
+	glTranslatef(camera->center.x, camera->center.y, camera->center.z);
+	skyBox->Draw();
+	glPopMatrix();
+
 	for (int i = 0; i < objects.size(); i++)
 	{
 		objects[i]->Draw();
 	}
-	glPushMatrix();
-	glTranslatef(camera->center.x, camera->center.y, camera->center.z);
-
-	skyBox->Draw();
-	glPopMatrix();
+	
 	//teapot->Draw();
 
 	//create a new text object in the center of the camera (follows cam movement)

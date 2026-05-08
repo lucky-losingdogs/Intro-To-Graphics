@@ -2,7 +2,7 @@
 
 SkyBox::SkyBox(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh, texture, x, y, z)
 {
-	size = 500;
+	size = 10;
 }
 
 Texture2D* SkyBox::MakeTexture(char* path)
@@ -12,6 +12,7 @@ Texture2D* SkyBox::MakeTexture(char* path)
 	return texture;
 }
 
+//load each bmp file texture for each face of the skybox
 void SkyBox::LoadSkybox()
 {
 	skyboxTex[0] = MakeTexture((char*)"Box_Front.bmp");
@@ -30,31 +31,59 @@ void SkyBox::Draw()
     glDepthMask(GL_FALSE);
     glColor3f(1, 1, 1);
 
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+    //front face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[0]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(-size, -size, -size);
+    glTexCoord2f(1, 0); glVertex3f(size, -size, -size);
+    glTexCoord2f(1, 1); glVertex3f(size, size, -size);
+    glTexCoord2f(0, 1); glVertex3f(-size, size, -size);
+    glEnd();
 
-    glVertexPointer(3, GL_FLOAT, 0, mesh->vertices);
-    glNormalPointer(GL_FLOAT, 0, mesh->normals);
-    glTexCoordPointer(2, GL_FLOAT, 0, mesh->texCoords);
+    //back face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[1]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(size, -size, size);
+    glTexCoord2f(1, 0); glVertex3f(-size, -size, size);
+    glTexCoord2f(1, 1); glVertex3f(-size, size, size);
+    glTexCoord2f(0, 1); glVertex3f(size, size, size);
+    glEnd();
 
-    glPushMatrix();
-    glTranslatef(position.x, position.y, position.z);
+    //left face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[2]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(-size, -size, size);
+    glTexCoord2f(1, 0); glVertex3f(-size, -size, -size);
+    glTexCoord2f(1, 1); glVertex3f(-size, size, -size);
+    glTexCoord2f(0, 1); glVertex3f(-size, size, size);
+    glEnd();
 
-    int indicesPerFace = 6;
+    //right face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[3]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(size, -size, -size);
+    glTexCoord2f(1, 0); glVertex3f(size, -size, size);
+    glTexCoord2f(1, 1); glVertex3f(size, size, size);
+    glTexCoord2f(0, 1); glVertex3f(size, size, -size);
+    glEnd();
 
-    for (int i = 0; i < 6; i++)
-    {
-        glBindTexture(GL_TEXTURE_2D, skyboxTex[i]->GetID());
+    //top face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[4]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(-size, size, -size);
+    glTexCoord2f(1, 0); glVertex3f(size, size, -size);
+    glTexCoord2f(1, 1); glVertex3f(size, size, size);
+    glTexCoord2f(0, 1); glVertex3f(-size, size, size);
+    glEnd();
 
-        glDrawElements(GL_TRIANGLES, indicesPerFace, GL_UNSIGNED_SHORT, mesh->indices + (i * indicesPerFace));
-    }
-
-    glPopMatrix();
-
-    glDisableClientState(GL_TEXTURE_COORD_ARRAY);
-    glDisableClientState(GL_NORMAL_ARRAY);
-    glDisableClientState(GL_VERTEX_ARRAY);
+    //bottom face
+    glBindTexture(GL_TEXTURE_2D, skyboxTex[5]->GetID());
+    glBegin(GL_QUADS);
+    glTexCoord2f(0, 0); glVertex3f(-size, -size, size);
+    glTexCoord2f(1, 0); glVertex3f(size, -size, size);
+    glTexCoord2f(1, 1); glVertex3f(size, -size, -size);
+    glTexCoord2f(0, 1); glVertex3f(-size, -size, -size);
+    glEnd();
 
     glDepthMask(GL_TRUE);
     glEnable(GL_CULL_FACE);

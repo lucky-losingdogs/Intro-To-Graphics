@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\SkyBox.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\SkyBox.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Texture2D.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -31,10 +35,6 @@
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\Texture2D.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\SkyBox.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{DDEB4A0D-7EA4-4105-9BD2-91172B17944A}|Graphics-Intro\\Graphics-Intro.vcxproj|solutionrelative:Graphics-Intro\\HelloGL.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -58,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "cube.txt",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\cube.txt",
               "RelativeDocumentMoniker": "Graphics-Intro\\cube.txt",
@@ -66,12 +66,11 @@
               "RelativeToolTip": "Graphics-Intro\\cube.txt",
               "ViewState": "AgIAADoAAAAAAAAAAAAqwFcAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2026-05-08T00:49:37.737Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T00:49:37.737Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "SceneObject.h",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.h",
               "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.h",
@@ -79,12 +78,11 @@
               "RelativeToolTip": "Graphics-Intro\\SceneObject.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-07T23:29:14.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T23:29:14.576Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "SceneObject.cpp",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SceneObject.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\SceneObject.cpp",
@@ -92,25 +90,24 @@
               "RelativeToolTip": "Graphics-Intro\\SceneObject.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-07T23:15:57.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T23:15:57.48Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SkyBox.cpp",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\SkyBox.cpp",
               "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.cpp",
               "RelativeToolTip": "Graphics-Intro\\SkyBox.cpp",
-              "ViewState": "AgIAABwAAAAAAAAAAAAiwB4AAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAACQAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-05-07T23:18:24.033Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "SkyBox.h",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\SkyBox.h",
               "RelativeDocumentMoniker": "Graphics-Intro\\SkyBox.h",
@@ -123,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Texture2D.h",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Texture2D.h",
               "RelativeDocumentMoniker": "Graphics-Intro\\Texture2D.h",
@@ -131,12 +128,11 @@
               "RelativeToolTip": "Graphics-Intro\\Texture2D.h",
               "ViewState": "AgIAAA8AAAAAAAAAAADwvx0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-05-07T22:28:09.782Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T22:28:09.782Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Texture2D.cpp",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\Texture2D.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\Texture2D.cpp",
@@ -144,18 +140,17 @@
               "RelativeToolTip": "Graphics-Intro\\Texture2D.cpp",
               "ViewState": "AgIAAGAAAAAAAAAAAAAiwGYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2026-05-07T22:27:45.523Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-07T22:27:45.523Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "HelloGL.cpp",
               "DocumentMoniker": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
               "RelativeDocumentMoniker": "Graphics-Intro\\HelloGL.cpp",
               "ToolTip": "C:\\Users\\wolfe\\Documents\\GitHub\\Intro-To-Graphics\\Graphics-Intro\\Graphics-Intro\\HelloGL.cpp",
               "RelativeToolTip": "Graphics-Intro\\HelloGL.cpp",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAACEAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-03-05T18:21:42.419Z",
               "EditorCaption": ""
@@ -170,8 +165,7 @@
               "RelativeToolTip": "Graphics-Intro\\HelloGL.h",
               "ViewState": "AgIAACsAAAAAAAAAAAAAABAAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2026-04-22T18:47:31.785Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-22T18:47:31.785Z"
             }
           ]
         }

@@ -1,19 +1,2 @@
-﻿  HelloGL.cpp
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(26,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(56,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(61,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(63,25): warning C4018: '<': signed/unsigned mismatch
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(98,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(99,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(192,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(193,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(194,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(196,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(197,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(198,25): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(200,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(201,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(202,26): warning C4305: '=': truncation from 'double' to 'GLfloat'
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(224,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(246,20): warning C4018: '<': signed/unsigned mismatch
+﻿  SkyBox.cpp
   Graphics-Intro.vcxproj -> C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe
