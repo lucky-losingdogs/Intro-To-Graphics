@@ -33,7 +33,7 @@ Ray::Ray(float x, float y)
 	Vector3 _origin = Vector3::SetVector3((float)nearX, (float)nearY, (float)nearZ);
 	Vector3 _direction = Vector3::SetVector3((float)(farX - nearX), (float)(farY - nearY), (float)(farZ - nearZ));
 	//normalise for a unit direction
-	_direction = Vector3::NormaliseVector3(_direction);
+	_direction = Vector3::Normalise(_direction);
 
 	origin = _origin;
 	direction = _direction;

@@ -1,6 +1,10 @@
 #pragma once
 #include "Vector3.h"
-#include "Camera.h"
+#include <Windows.h>
+#include <gl/GL.h>
+#include <gl/GLU.h>
+#include "GL/freeglut.h"
+#include "GLUTCallbacks.h"
 
 struct Vector2
 {

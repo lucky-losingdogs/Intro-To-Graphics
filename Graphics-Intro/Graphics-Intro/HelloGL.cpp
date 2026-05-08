@@ -29,11 +29,8 @@ void HelloGL::Display()
 	skyBox->Draw();
 	glPopMatrix();
 
-	for (int i = 0; i < objects.size(); i++)
-	{
-		objects[i]->Draw();
-	}
-	
+	DrawList(listHead);
+
 	//teapot->Draw();
 
 	//create a new text object in the center of the camera (follows cam movement)
@@ -55,18 +52,7 @@ void HelloGL::Update()
 	glLightfv(GL_LIGHT0, GL_SPECULAR, &(lightData->specular.x));
 	glLightfv(GL_LIGHT0, GL_POSITION, &(lightPosition->x));
 
-	for (int i = 0; i < objects.size(); i++)
-	{
-		objects[i]->Update();
-	}
-
-	for (int i = 0; i < objects.size(); i++)
-	{
-		for (int j = i + 1; j < objects.size(); j++)
-		{
-			objects[i]->CheckCollision(objects[j]);
-		}
-	}
+	UpdateList(listHead);
 
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
@@ -89,18 +75,59 @@ void HelloGL::MouseClick(int button, int state, int x, int y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
 	{
+		moveMouse = false;
+
 		system("CLS");
 		//getting cursor position
 		mousePos->x = x;
 		mousePos->y = y;
 
-
-		SceneObject* clickedObj = CheckClickObject();
+		SceneObject* clickedObj = CheckClickObject(listHead);
 		if (clickedObj != nullptr)
 		{
 			clickedObj->OnClick();
 		}
 	}
+	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+	{
+		moveMouse = true;
+		firstClick = true;
+		glutWarpPointer(windowWidth / 2, windowHeight / 2);
+	}
+	else if (state == GLUT_UP)
+	{
+		moveMouse = false;
+	}
+}
+
+void HelloGL::MouseMove(int x, int y)
+{
+	//only allow camera movement if RMB held down
+	if (!moveMouse)
+		return;
+
+	//get screen center
+	Vector2 center;
+	center.x = windowWidth / 2;
+	center.y = windowHeight / 2;
+
+	//avoid snapping when warping to centre
+	if (firstClick)
+	{
+		firstClick = false;
+		return;
+	}
+
+	mouseDelta->x = x - center.x;
+	mouseDelta->y = center.y - y;
+
+	mouseDelta->x *= mouseSensitivity;
+	mouseDelta->y *= mouseSensitivity;
+
+	camera->RotateCamera(mouseDelta);
+
+	//set cursor to center of screen
+	glutWarpPointer(windowWidth / 2, windowHeight / 2);
 }
 
 void HelloGL::InitGL(int argc, char* argv[])
@@ -121,6 +148,9 @@ void HelloGL::InitGL(int argc, char* argv[])
 
 	//get mouse click input
 	glutMouseFunc(GLUTCallbacks::MouseClick);
+
+	//get mouse motion when holding a mouse button
+	glutMotionFunc(GLUTCallbacks::MouseUpdate);
 
 	glutTimerFunc(REFRESHRATE, GLUTCallbacks::Timer, REFRESHRATE);
 
@@ -174,8 +204,8 @@ void HelloGL::InitObjects()
 	Texture2D* texture2 = new Texture2D();
 	texture2->LoadBMP((char*)"snail.bmp");
 
-	objects.push_back(new Cube(cubeMesh, texture, 1.5f, 0, 5));
-	objects.push_back(new Cube(cubeMesh, texture2, 1, 0, 35));
+	objects->MakeNode(&listHead, (new Cube(cubeMesh, texture, 1.5f, 0, 5)));
+	objects->Append(listHead, (new Cube(cubeMesh, texture2, 1, 0, 35)));
 
 	/*Object::Load((char*)"Obj\\teapot.obj");
 	teapot = new Object(1, 1, 1);*/
@@ -213,6 +243,7 @@ void HelloGL::InitCam()
 void HelloGL::InitMouse()
 {
 	mousePos = new Vector2;
+	mouseDelta = new Vector2;
 }
 
 //make a new text object
@@ -221,22 +252,22 @@ void HelloGL::NewText(const char* text, Vector3 position, Colour colour)
 	Text* newText = new Text(text, position, colour);
 }
 
-SceneObject* HelloGL::GetObjectBounds(Vector3 cursor)
+SceneObject* HelloGL::GetObjectBounds(LinkedNode<SceneObject*>* node, Vector3 cursor)
 {
-	for (int i = 0; i < objects.size(); i++)
+	while (node != nullptr)
 	{
-		AABBCollider bounds = objects[i]->DefineBounds();
-
+		AABBCollider bounds = node->data->DefineBounds();
 		if (cursor.x >= bounds.min.x && cursor.x <= bounds.max.x && cursor.y >= bounds.min.y && cursor.y <= bounds.max.y)
 		{
-			return objects[i];
+			return node->data;
 		}
-	}
 
+		node = node->nextNode;
+	}
 	return nullptr;
 }
 
-SceneObject* HelloGL::CheckClickObject()
+SceneObject* HelloGL::CheckClickObject(LinkedNode<SceneObject*>* node)
 {
 	//make a ray and pass mouse pos
 	Ray ray(mousePos->x, mousePos->y);
@@ -245,9 +276,9 @@ SceneObject* HelloGL::CheckClickObject()
 	SceneObject* closestObj = nullptr;
 
 	//go through every object and check if the ray intercepts its collider
-	for (int i = 0; i < objects.size(); i++)
+	while (node != nullptr)
 	{
-		AABBCollider bounds = objects[i]->DefineBounds();
+		AABBCollider bounds = node->data->DefineBounds();
 		float hitDistance;
 
 		if (ray.RayIntersectsAABB(ray, bounds, hitDistance))
@@ -258,11 +289,33 @@ SceneObject* HelloGL::CheckClickObject()
 			{
 				//set new closest obj
 				closestObjDistance = hitDistance;
-				closestObj = objects[i];
+				closestObj = node->data;
 			}
 		}
+
+		node = node->nextNode;
 	}
 
 	cout << "Clicked object: " << closestObj << "\n";
 	return closestObj;
+}
+
+void HelloGL::DrawList(LinkedNode<SceneObject*>* node)
+{
+	//while the node is set, draw the obj
+	while (node != nullptr)
+	{
+		node->data->Draw();
+		node = node->nextNode;
+	}
+}
+
+void HelloGL::UpdateList(LinkedNode<SceneObject*>* node)
+{
+	//while the node is set, update the obj
+	while (node != nullptr)
+	{
+		node->data->Update();
+		node = node->nextNode;
+	}
 }

@@ -39,10 +39,8 @@ private:
 template <typename T>
 LinkedNode<T>* LinkedList<T>::MakeNode(LinkedNode<T>** head, T data)
 {
-	LinkedNode<T>* newNode = new LinkedNode<T>;
+	LinkedNode<T>* newNode = new LinkedNode<T>(data);
 	LinkedNode<T>* lastNode = *head;
-
-	newNode->data = data;
 	newNode->nextNode = nullptr;
 
 	//if the head doesn't contain a node, create a head node for the start of the list
@@ -70,9 +68,7 @@ LinkedNode<T>* LinkedList<T>::MakeNode(LinkedNode<T>** head, T data)
 template <typename T>
 void LinkedList<T>::InsertFirst(LinkedNode<T>** head, T data)
 {
-	LinkedNode<T>* newNode = new LinkedNode<T>;
-	//assign data
-	newNode->data = data;
+	LinkedNode<T>* newNode = new LinkedNode<T>(data);
 
 	//make the newNode the head of the list
 	//and make the current head the nextNode of the newNode
@@ -93,7 +89,7 @@ void LinkedList<T>::InsertAfter(LinkedNode<T>* lastNode, T data)
 	}
 
 	//make new node
-	LinkedNode<T>* newNode = new LinkedNode<T>;
+	LinkedNode<T>* newNode = new LinkedNode<T>(data);
 	newNode->data = data;
 
 	//insert newNode by swapping the nextNode of the lastNode to be this newNode
@@ -108,7 +104,7 @@ template <typename T>
 void LinkedList<T>::Append(LinkedNode<T>* node, T data)
 {
 	//make new node
-	LinkedNode<T>* newNode = new LinkedNode<T>;
+	LinkedNode<T>* newNode = new LinkedNode<T>(data);
 	newNode->nextNode = nullptr;
 	newNode->data = data;
 

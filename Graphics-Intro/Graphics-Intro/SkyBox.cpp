@@ -2,7 +2,7 @@
 
 SkyBox::SkyBox(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh, texture, x, y, z)
 {
-	size = 10;
+	
 }
 
 Texture2D* SkyBox::MakeTexture(char* path)
@@ -34,55 +34,81 @@ void SkyBox::Draw()
     //front face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[0]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(-size, -size, -size);
-    glTexCoord2f(1, 0); glVertex3f(size, -size, -size);
-    glTexCoord2f(1, 1); glVertex3f(size, size, -size);
-    glTexCoord2f(0, 1); glVertex3f(-size, size, -size);
+    //set texture coordinate
+    glTexCoord2f(0, 0); 
+    //set vertex coordinate
+    glVertex3f(-1, -1, -1);
+    glTexCoord2f(1, 0);
+    glVertex3f(1, -1, -1);
+    glTexCoord2f(1, 1);
+    glVertex3f(1, 1, -1);
+    glTexCoord2f(0, 1);
+    glVertex3f(-1, 1, -1);
     glEnd();
 
     //back face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[1]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(size, -size, size);
-    glTexCoord2f(1, 0); glVertex3f(-size, -size, size);
-    glTexCoord2f(1, 1); glVertex3f(-size, size, size);
-    glTexCoord2f(0, 1); glVertex3f(size, size, size);
+    glTexCoord2f(0, 0);
+    glVertex3f(1, -1, 1);
+    glTexCoord2f(1, 0);
+    glVertex3f(-1, -1, 1);
+    glTexCoord2f(1, 1);
+    glVertex3f(-1, 1, 1);
+    glTexCoord2f(0, 1);
+    glVertex3f(1, 1, 1);
     glEnd();
 
     //left face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[2]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(-size, -size, size);
-    glTexCoord2f(1, 0); glVertex3f(-size, -size, -size);
-    glTexCoord2f(1, 1); glVertex3f(-size, size, -size);
-    glTexCoord2f(0, 1); glVertex3f(-size, size, size);
+    glTexCoord2f(0, 0);
+    glVertex3f(-1, -1, 1);
+    glTexCoord2f(1, 0);
+    glVertex3f(-1, -1, -1);
+    glTexCoord2f(1, 1);
+    glVertex3f(-1, 1, -1);
+    glTexCoord2f(0, 1); 
+    glVertex3f(-1, 1, 1);
     glEnd();
 
     //right face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[3]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(size, -size, -size);
-    glTexCoord2f(1, 0); glVertex3f(size, -size, size);
-    glTexCoord2f(1, 1); glVertex3f(size, size, size);
-    glTexCoord2f(0, 1); glVertex3f(size, size, -size);
+    glTexCoord2f(0, 0);
+    glVertex3f(1, -1, -1);
+    glTexCoord2f(1, 0);
+    glVertex3f(1, -1, 1);
+    glTexCoord2f(1, 1);
+    glVertex3f(1, 1, 1);
+    glTexCoord2f(0, 1);
+    glVertex3f(1, 1, -1);
     glEnd();
 
     //top face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[4]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(-size, size, -size);
-    glTexCoord2f(1, 0); glVertex3f(size, size, -size);
-    glTexCoord2f(1, 1); glVertex3f(size, size, size);
-    glTexCoord2f(0, 1); glVertex3f(-size, size, size);
+    glTexCoord2f(0, 0);
+    glVertex3f(-1, 1, -1);
+    glTexCoord2f(1, 0);
+    glVertex3f(1, 1, -1);
+    glTexCoord2f(1, 1);
+    glVertex3f(1, 1, 1);
+    glTexCoord2f(0, 1);
+    glVertex3f(-1, 1, 1);
     glEnd();
 
     //bottom face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[5]->GetID());
     glBegin(GL_QUADS);
-    glTexCoord2f(0, 0); glVertex3f(-size, -size, size);
-    glTexCoord2f(1, 0); glVertex3f(size, -size, size);
-    glTexCoord2f(1, 1); glVertex3f(size, -size, -size);
-    glTexCoord2f(0, 1); glVertex3f(-size, -size, -size);
+    glTexCoord2f(0, 0);
+    glVertex3f(-1, -1, 1);
+    glTexCoord2f(1, 0);
+    glVertex3f(1, -1, 1);
+    glTexCoord2f(1, 1);
+    glVertex3f(1, -1, -1);
+    glTexCoord2f(0, 1);
+    glVertex3f(-1, -1, -1);
     glEnd();
 
     glDepthMask(GL_TRUE);

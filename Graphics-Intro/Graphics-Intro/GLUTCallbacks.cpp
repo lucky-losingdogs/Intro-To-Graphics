@@ -46,4 +46,9 @@ namespace GLUTCallbacks
 	{
 		renderer->MouseClick(button, state, x, y);
 	}
+
+	void MouseUpdate(int x, int y)
+	{
+		renderer->MouseMove(x, y);
+	}
 }

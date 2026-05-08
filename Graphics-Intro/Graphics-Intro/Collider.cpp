@@ -25,8 +25,8 @@ AABBCollider::AABBCollider(Mesh* mesh, Vector3 position)
             max.z = vertices[i].z;
     }
 
-    min = Vector3::AddVector3(min, position);
-    max = Vector3::AddVector3(max, position);
+    min = Vector3::Add(min, position);
+    max = Vector3::Add(max, position);
 }
 
 //check if the min/max vector values collide with the other min/max vectors

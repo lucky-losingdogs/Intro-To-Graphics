@@ -2,14 +2,12 @@
 
 Camera::Camera()
 {
-	camMoveX = 0.0f;
-	camMoveY = 0.0f;
-	camMoveZ = 0.0f;
-
 	eye = Vector3::SetVector3(0, 0, -1);
 	center = Vector3::SetVector3(0, 0, 0);
 	up = Vector3::SetVector3(0, 1, 0);
 	forward = Vector3::SetVector3(0, 0, -1);
+	yaw = 0;
+	pitch = 0;
 }
 
 Camera::~Camera()
@@ -19,33 +17,55 @@ Camera::~Camera()
 
 void Camera::Update()
 {
-	center = Vector3::AddVector3(eye, forward);
+	center = Vector3::Add(eye, forward);
 	gluLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z);
 }
 
 void Camera::MoveCamera(unsigned char key, float delta)
 {
-	//moves the camera along X or Y axis depending on keyboard input
+	Vector3 right = Vector3::CrossProduct(forward, up);
+	right = Vector3::Normalise(right);
+	
+	//moves the camera along X axis
 	switch (key)
 	{
 	case 'd':
-		eye.x += delta;
+		eye = Vector3::Add(eye, Vector3::Multiply(right, delta));
 		break;
 	case 'a':
-		eye.x -= delta;
+		eye = Vector3::Subtract(eye, Vector3::Multiply(right, delta));
 		break;
+	//moves the camera along Z axis
 	case 'w':
-		eye.y += delta;
+		eye = Vector3::Add(eye, Vector3::Multiply(forward, delta));
 		break;
 	case 's':
-		eye.y -= delta;
-		break;
-	//moves the camera along Z axis if keyboard input is special keys (up and down arrow keys)
-	case GLUT_KEY_UP:
-		eye.z += forward.z * delta;
-		break;
-	case GLUT_KEY_DOWN:
-		eye.z -= forward.z * delta;
+		eye = Vector3::Subtract(eye, Vector3::Multiply(forward, delta));
 		break;
 	}
+}
+
+void Camera::RotateCamera(Vector2* mouseDelta)
+{
+	yaw += mouseDelta->x;
+	pitch += mouseDelta->y;
+
+	//clamp yaw
+	if (yaw > 360)
+		yaw -= 360;
+	if (yaw < -360)
+		yaw += 360;
+
+	//clamp pitch
+	if (pitch > 89.0f)
+		pitch = 89.0f;
+	if (pitch < -89.0f)
+		pitch = -89.0f;
+
+	//convert to radians
+	float radYaw = yaw * 3.14159265f / 180.0f;
+	float radPitch = pitch * 3.14159265f / 180.0f;
+
+	Vector3 direction = Vector3::SetVector3(cosf(radYaw) * cosf(radPitch), sinf(radPitch), sinf(radYaw) * (cosf(radPitch)));
+	forward = Vector3::Normalise(direction);
 }

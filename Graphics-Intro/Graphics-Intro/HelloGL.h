@@ -15,6 +15,7 @@
 #include "LinkedList.h"
 #include "BinaryTree.h"
 #include "SkyBox.h"
+#include "Camera.h"
 
 #define REFRESHRATE 16
 
@@ -34,9 +35,10 @@ public:
 	void Keyboard(unsigned char key, int x, int y);
 	void SpecialKeyboard(int key, int x, int y);
 	void MouseClick(int button, int state, int x, int y);
+	void MouseMove(int x, int y);
 
-	SceneObject* GetObjectBounds(Vector3 cursor);
-	SceneObject* CheckClickObject();
+	SceneObject* GetObjectBounds(LinkedNode<SceneObject*>* node, Vector3 cursor);
+	SceneObject* CheckClickObject(LinkedNode<SceneObject*>* node);
 
 	void InitSkyBox();
 	void InitObjects();
@@ -45,6 +47,9 @@ public:
 	void InitCam();
 	void InitMouse();
 	void NewText(const char* text, Vector3 position, Colour colour);
+
+	void DrawList(LinkedNode<SceneObject*>* node);
+	void UpdateList(LinkedNode<SceneObject*>* node);
 	
 private:
 	const int windowHeight = 800, windowWidth = 800;
@@ -54,17 +59,23 @@ private:
 	Camera* camera;
 
 	Vector2* mousePos;
-
-	vector<SceneObject*> objects;
-	SkyBox* skyBox;
-	Object* teapot;
+	Vector2* mouseDelta;
+	float mouseSensitivity = 0.1f;
+	bool moveMouse = false;
+	bool firstClick = true;
 
 	Vector4* lightPosition;
 	Lighting* lightData;
 
-	LinkedList<SceneObject>* list = new LinkedList<SceneObject>();
-	LinkedNode<SceneObject>* listHead = nullptr;
+	LinkedList<SceneObject*>* objects;
+	LinkedNode<SceneObject*>* listHead = nullptr;
+
+
 	BinaryTree<int>* tree = new BinaryTree<int>();
 	TreeNode<int>* treeHead = nullptr;
+
+	//vector<SceneObject*> objects;
+	SkyBox* skyBox;
+	Object* teapot;
 };
 
