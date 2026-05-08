@@ -68,12 +68,6 @@ void HelloGL::Update()
 		}
 	}
 
-	SceneObject* clickedObj = CheckClickObject();
-	if (clickedObj != nullptr)
-	{
-		clickedObj->OnClick();
-	}
-
 	//marks the current window as needing to be redisplayed
 	glutPostRedisplay();
 }
@@ -99,9 +93,15 @@ void HelloGL::MouseClick(int button, int state, int x, int y)
 		//getting cursor position
 		mousePos->x = x;
 		mousePos->y = y;
+
+
+		SceneObject* clickedObj = CheckClickObject();
+		if (clickedObj != nullptr)
+		{
+			clickedObj->OnClick();
+		}
 	}
 }
-
 
 void HelloGL::InitGL(int argc, char* argv[])
 {
@@ -241,28 +241,28 @@ SceneObject* HelloGL::CheckClickObject()
 	//make a ray and pass mouse pos
 	Ray ray(mousePos->x, mousePos->y);
 
-	float closestObjDistance = 0;
-	float newClosestObj = -1;
-
+	float closestObjDistance = (numeric_limits<float>::max)();
 	SceneObject* closestObj = nullptr;
+
+	//go through every object and check if the ray intercepts its collider
 	for (int i = 0; i < objects.size(); i++)
 	{
 		AABBCollider bounds = objects[i]->DefineBounds();
+		float hitDistance;
 
-		if (ray.RayIntersectsAABB(ray, bounds, newClosestObj))
+		if (ray.RayIntersectsAABB(ray, bounds, hitDistance))
 		{
-			if (newClosestObj < closestObjDistance)
+			//ignore obj behind camera
+			//if hit distance is smaller/closer than the current closest distance
+			if (hitDistance >= 0.0f && hitDistance < closestObjDistance)
 			{
-				closestObjDistance = newClosestObj;
+				//set new closest obj
+				closestObjDistance = hitDistance;
 				closestObj = objects[i];
-				std::cout << "Clicked object!" << i << "\n";
-				break;
 			}
 		}
 	}
 
-	if (closestObj != nullptr)
-		return closestObj;
-	else
-		return nullptr;
+	cout << "Clicked object: " << closestObj << "\n";
+	return closestObj;
 }
