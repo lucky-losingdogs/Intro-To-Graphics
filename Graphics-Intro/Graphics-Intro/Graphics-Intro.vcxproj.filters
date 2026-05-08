@@ -57,6 +57,9 @@
     <ClCompile Include="Ray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HelloGL.h">
@@ -107,6 +110,9 @@
     <ClInclude Include="BinaryTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="pyramid.txt">
@@ -123,6 +129,24 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="snail.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Back.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Bottom.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Front.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Box_Top.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

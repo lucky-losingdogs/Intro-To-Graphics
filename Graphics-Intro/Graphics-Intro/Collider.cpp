@@ -59,12 +59,10 @@ bool SphereCollider::Intersects(const Collider& other) const
 
     if (distanceSqr <= radiusDistance)
     {
-        std::cout << "colliding\n";
         return true;
     }
     else
     {
-        std::cout << "not colliding\n";
         return false;
     }
 

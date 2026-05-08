@@ -14,6 +14,7 @@
 #include <vector>
 #include "LinkedList.h"
 #include "BinaryTree.h"
+#include "SkyBox.h"
 
 #define REFRESHRATE 16
 
@@ -37,6 +38,7 @@ public:
 	SceneObject* GetObjectBounds(Vector3 cursor);
 	SceneObject* CheckClickObject();
 
+	void InitSkyBox();
 	void InitObjects();
 	void InitGL(int argc, char* argv[]);
 	void InitLighting();
@@ -54,6 +56,7 @@ private:
 	Vector2* mousePos;
 
 	vector<SceneObject*> objects;
+	SkyBox* skyBox;
 	Object* teapot;
 
 	Vector4* lightPosition;

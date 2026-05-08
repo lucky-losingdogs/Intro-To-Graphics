@@ -3,24 +3,10 @@
 
 HelloGL::HelloGL(int argc, char* argv[])
 {
-	tree->MakeHead(&treeHead, 67);
-	tree->PrintPreOrder(treeHead);
-	cout << "\n----------\n";
-	tree->InsertFirst(&treeHead, 99);
-	tree->InsertAfter(treeHead->rightNode, 2000, true);
-	tree->InsertAfter(treeHead, 2000, true);
-	tree->InsertAfter(treeHead->leftNode, 23, false);
-	tree->InsertAfter(treeHead->leftNode->leftNode, 50, true);
-	tree->PrintPreOrder(treeHead);
-	cout << "\n----------\n";
-	cout << "Deleting tree\n";
-	tree->DeleteTree(&treeHead);
-	tree->PrintPreOrder(treeHead);
-	cout << "\n----------\n";
-
 	InitGL(argc, argv);
 	InitCam();
 	InitMouse();
+	InitSkyBox();
 	InitLighting();
 	InitObjects();
 	
@@ -41,7 +27,11 @@ void HelloGL::Display()
 	{
 		objects[i]->Draw();
 	}
+	glPushMatrix();
+	glTranslatef(camera->center.x, camera->center.y, camera->center.z);
 
+	skyBox->Draw();
+	glPopMatrix();
 	//teapot->Draw();
 
 	//create a new text object in the center of the camera (follows cam movement)
@@ -161,6 +151,16 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//enable lighting and the first light source
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
+}
+
+void HelloGL::InitSkyBox()
+{
+	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
+	Texture2D* tempTexture = new Texture2D();
+	tempTexture->LoadBMP((char*)"snail.bmp");
+	skyBox = new SkyBox(cubeMesh, tempTexture,0,0,0);
+
+	skyBox->LoadSkybox();
 }
 
 void HelloGL::InitObjects()

@@ -134,6 +134,7 @@
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SceneObject.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="Texture2D.cpp" />
     <ClCompile Include="Vector3.cpp" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SceneObject.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Structures.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="Texture2D.h" />
@@ -164,6 +166,12 @@
     <None Include="penguins.raw" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Box_Back.bmp" />
+    <Image Include="Box_Bottom.bmp" />
+    <Image Include="Box_Front.bmp" />
+    <Image Include="Box_Left.bmp" />
+    <Image Include="Box_Right.bmp" />
+    <Image Include="Box_Top.bmp" />
     <Image Include="snail.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
