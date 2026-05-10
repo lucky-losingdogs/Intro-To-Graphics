@@ -22,7 +22,7 @@ protected:
 
 	Collider* collider;
 
-	string name;
+	string name = "";
 
 public:
 	SceneObject(Mesh* _mesh, Texture2D* _texture, float x, float y, float z);

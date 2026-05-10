@@ -52,6 +52,7 @@ void SceneObject::Draw()
 		DefineMaterial();
 
 		glPushMatrix();
+		//transform how object is rendered if position, scale or rotation have been changed
 		glTranslatef(position.x, position.y, position.z);
 		glScalef(scale.x, scale.y, scale.z);
 		glRotatef(rotation, rotationAxis.x, rotationAxis.y, rotationAxis.z);
@@ -117,6 +118,11 @@ void SceneObject::CheckCollision(SceneObject *other)
 	}
 }
 
+//<summary>
+//create temp vertices vector that stores a version of the vertices
+//that are altered to match how they're rendered
+//that can be passed to create the AABB collider of the object
+//</summary>
 AABBCollider SceneObject::DefineBounds()
 {
 	vector<Vertex> tempVertex;
@@ -152,6 +158,7 @@ void SceneObject::RotateVertex(Vertex& vertex)
 	vertex = HandleRotateVertex(vertex, rotation, rotationAxis);
 }
 
+//rotate passed in vertex in 3d space
 Vertex SceneObject::HandleRotateVertex(Vertex vertex, float angleDegrees, Vector3 axis)
 {
 	//convert degrees to radians

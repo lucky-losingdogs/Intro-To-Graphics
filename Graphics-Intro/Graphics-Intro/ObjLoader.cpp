@@ -47,12 +47,12 @@ namespace ObjLoader
 			return nullptr;
 		}
 
+		//temp storage
 		vector<Vertex> vertices;
 		vector<Normal> normals;
 		vector<GLuint> tempIndices;
-		vector<TexCoord> texels;
+		vector<TexCoord> texCoord;
 		vector<PackedVertex> packedVertices;
-		unordered_map<string, int> uniqueMap;
 
 		string line = "";
 		while (getline(inFile, line))
@@ -61,12 +61,14 @@ namespace ObjLoader
 			if (line.empty())
 				continue;
 
+			//split te lines into tokens to check
+			//which part of the obj is being read
 			istringstream ss(line);
 			string token;
 			ss >> token;
 
 			//check the token at the start of the line
-			//parse verticies
+			//parse vertices
 			if (token == "v")
 			{
 				float x, y, z;
@@ -81,12 +83,12 @@ namespace ObjLoader
 				ss >> nx >> ny >> nz;
 				normals.push_back(Normal{ nx, ny, nz });
 			}
-			//parse texels
+			//parse texture coordinates
 			else if (token == "vt")
 			{
 				float u, v;
 				ss >> u >> v;
-				texels.push_back(TexCoord{ u, v });
+				texCoord.push_back(TexCoord{ u, v });
 			}
 			//parse faces
 			else if (token == "f")
@@ -95,29 +97,32 @@ namespace ObjLoader
 				vector<string> faceTokens;
 				string faceVertex;
 
+				//read face tokens
 				while (ss >> faceVertex)
 					faceTokens.push_back(faceVertex);
 
+				//convert polygons into triangles
 				for (size_t i = 1; i + 1 < faceTokens.size(); i++)
 				{
-					string tri[3] = { faceTokens[0], faceTokens[i], faceTokens[i + 1] };
+					string triangle[3] = { faceTokens[0], faceTokens[i], faceTokens[i + 1] };
 
-					for (string& faceToken : tri)
+					//parse each face vertex in the triangle
+					for (string& faceToken : triangle)
 					{
 						istringstream fss(faceToken);
 						string vStr, vtStr, vnStr;
 
-						//get the vertex, texel and normal from the face
+						//face token is split into vertex, tex coord and normal
 						getline(fss, vStr, '/'); //read until 1st /
 						getline(fss, vtStr, '/'); //get after 1st / and before 2nd /
 						getline(fss, vnStr, '/'); // get after 2nd /
-
+						//[!] Warning: can only parse obj with coords separated with 1 '/'
 
 						//convert from 1-based obj to 0-based
 						//also convert from string to int
 						int vIndex = stoi(vStr) - 1;
 
-						//make sure texcoords and normals are present in obj
+						//check texcoords and normals aren't missing
 						int vtIndex = -1;
 						if (!vtStr.empty())
 							vtIndex = stoi(vtStr) - 1;
@@ -126,26 +131,30 @@ namespace ObjLoader
 						if (!vnStr.empty())
 							vnIndex = stoi(vnStr) - 1;
 
-						string key = vStr + "/" + vtStr + "/" + vnStr;
-
+						//combines vertex, tex and normal into 1 vertex struct
 						PackedVertex packedVertex;
 						packedVertex.vertex = vertices[vIndex];
 
+						//set default tex coord in case of absence]
 						packedVertex.texCoord = { 0.0f, 0.0f };
+						//if present, set it in packVertex
 						if (vtIndex >= 0)
-							packedVertex.texCoord = texels[vtIndex];
+							packedVertex.texCoord = texCoord[vtIndex];
 
 						packedVertex.normal = { 0.0f, 0.0f , 1.0f };
 						if (vnIndex >= 0)
 							packedVertex.normal = normals[vnIndex];
 
+						//store assembled packed vertex in vector
 						packedVertices.push_back(packedVertex);
+						//store index pointing to the newly added vertex
 						tempIndices.push_back(packedVertices.size() - 1);
 					}
 				}
 			}
 		}
 
+		//load vectors into mesh
 		LoadVertices(packedVertices, *mesh);
 		LoadIndices(tempIndices, *mesh);
 
