@@ -37,7 +37,6 @@ namespace MeshLoader
 		{
 			mesh.normals = new Normal[mesh.normalsCount];
 
-			//populate vertices array from file
 			for (int i = 0; i < mesh.normalsCount; i++)
 			{
 				inFile >> mesh.normals[i].x;
@@ -75,7 +74,7 @@ namespace MeshLoader
 		{
 			mesh.indices = new GLushort[mesh.indexCount];
 
-			//populate vertices array from file
+			//populate indices array from file
 			for (int i = 0; i < mesh.indexCount; i++)
 			{
 				inFile >> mesh.indices[i];
@@ -106,7 +105,7 @@ namespace MeshLoader
 		return mesh;
 	}
 
-	bool MeshLoader::CheckIfTextured(ifstream& inFile)
+	bool CheckIfTextured(ifstream& inFile)
 	{
 		return inFile.eof();
 	}

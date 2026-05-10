@@ -1,2 +1,9 @@
-﻿  SkyBox.cpp
+﻿  HelloGL.cpp
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(90,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(91,17): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(120,25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(121,26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(156,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(408,56): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Graphics-Intro\HelloGL.cpp(422,53): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Graphics-Intro.vcxproj -> C:\Users\wolfe\Documents\GitHub\Intro-To-Graphics\Graphics-Intro\Debug\Graphics-Intro.exe

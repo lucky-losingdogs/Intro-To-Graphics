@@ -7,7 +7,8 @@ class Vector3
 public:
 	float x, y, z;
 
-	static Vector3 SetVector3(float x, float y, float z);
+	Vector3(float x, float y, float z) : x(x), y(y), z(z) {}
+	Vector3() : x(0), y(0), z(0) {}
 	static Vector3 Add(Vector3 a, Vector3 b);
 	static Vertex Add(Vertex a, Vector3 b);
 	static Vector3 Subtract(Vector3 a, Vector3 b);
@@ -15,4 +16,5 @@ public:
 	static Vector3 Multiply(Vector3 a, float b);
 	static Vector3 Normalise(Vector3 v);
 	static Vector3 CrossProduct(Vector3 a, Vector3 b);
+	static float Magnitude(Vector3 a);
 };

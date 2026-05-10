@@ -26,20 +26,23 @@ namespace GLUTCallbacks
 	void Timer(int preferredRefresh)
 	{
 		int updateTime = glutGet(GLUT_ELAPSED_TIME);
+
 		renderer->Update();
+
 		updateTime = glutGet(GLUT_ELAPSED_TIME) - updateTime;
 
-		glutTimerFunc(preferredRefresh - updateTime, GLUTCallbacks::Timer, preferredRefresh);
+
+		int delay = preferredRefresh - updateTime;
+
+		if (delay < 1)
+			delay = 1;
+
+		glutTimerFunc(delay, GLUTCallbacks::Timer, preferredRefresh);
 	}
 
 	void Keyboard(unsigned char key, int x, int y)
 	{
 		renderer->Keyboard(key, x, y);
-	}
-
-	void SpecialKeyboard(int key, int x, int y)
-	{
-		renderer->SpecialKeyboard(key, x, y);
 	}
 
 	void MouseClick(int button, int state, int x, int y)
@@ -50,5 +53,10 @@ namespace GLUTCallbacks
 	void MouseUpdate(int x, int y)
 	{
 		renderer->MouseMove(x, y);
+	}
+
+	void MenuHandler(int option)
+	{
+		renderer->MenuHandler(option);
 	}
 }

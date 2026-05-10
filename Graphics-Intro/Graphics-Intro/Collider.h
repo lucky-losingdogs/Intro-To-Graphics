@@ -1,5 +1,7 @@
 #pragma once
 #include "Structures.h"
+#include <vector>
+using namespace std;
 
 class Collider
 {
@@ -11,7 +13,7 @@ public:
 class AABBCollider : public Collider
 {
 public:
-    AABBCollider(Mesh* mesh, Vector3 position);
+    AABBCollider(vector<Vertex> vertices, Vector3 position);
     bool Intersects(const Collider &other) const override;
 
     Vertex min;

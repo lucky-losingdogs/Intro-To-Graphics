@@ -12,7 +12,8 @@ SceneObject::SceneObject(Mesh* _mesh, Texture2D* _texture, float x, float y, flo
 	position.z = z;
 
 	rotation = 0;
-	clicked = false;
+
+	name = "SceneObject";
 }
 
 SceneObject::~SceneObject()
@@ -48,12 +49,12 @@ void SceneObject::Draw()
 		glVertexPointer(3, GL_FLOAT, 0, mesh->vertices);
 		glNormalPointer(GL_FLOAT, 0, mesh->normals);
 
-		if (!clicked)
-			DefineMaterial();
+		DefineMaterial();
 
 		glPushMatrix();
 		glTranslatef(position.x, position.y, position.z);
-		glRotatef(rotation, 1, 0, 0);
+		glScalef(scale.x, scale.y, scale.z);
+		glRotatef(rotation, rotationAxis.x, rotationAxis.y, rotationAxis.z);
 		glDrawElements(GL_TRIANGLES, mesh->indexCount, GL_UNSIGNED_SHORT, mesh->indices);
 		glPopMatrix();
 
@@ -76,18 +77,36 @@ void SceneObject::Update()
 void SceneObject::DefineMaterial()
 {
 	material = new Material();
-	material->ambient.x = 0.8; material->ambient.y = 0.05; material->ambient.z = 0.05;
-	material->ambient.w = 1.0;
-	material->diffuse.x = 0.8; material->diffuse.y = 0.05; material->diffuse.z = 0.05;
-	material->diffuse.w = 1.0;
-	material->specular.x = 1.0; material->specular.y = 1.0; material->specular.z = 1.0;
-	material->specular.w = 1.0;
+	material->ambient = { 0.2f, 0.2f, 0.2f, 1.0f };
+	material->diffuse = { 0.8f, 0.8f, 0.8f, 1.0f };
+	material->specular = { 1.0f, 1.0f, 1.0f, 1.0f };
 	material->shininess = 100.0f;
 
 	glMaterialfv(GL_FRONT, GL_AMBIENT, &(material->ambient.x));
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, &(material->diffuse.x));
 	glMaterialfv(GL_FRONT, GL_SPECULAR, &(material->specular.x));
 	glMaterialf(GL_FRONT, GL_SHININESS, material->shininess);
+}
+
+void SceneObject::UpdateTexture(Texture2D* newTex)
+{
+	texture = newTex;
+}
+
+void SceneObject::Scale(Vector3 newScale)
+{
+	scale = newScale;
+}
+
+void SceneObject::Rotate(float rotationScale, Vector3 axis)
+{
+	rotation = rotationScale;
+	rotationAxis = axis;
+}
+
+void SceneObject::Translate(Vector3 newPosition)
+{
+	position = newPosition;
 }
 
 void SceneObject::CheckCollision(SceneObject *other)
@@ -100,10 +119,80 @@ void SceneObject::CheckCollision(SceneObject *other)
 
 AABBCollider SceneObject::DefineBounds()
 {
-	return AABBCollider(mesh, position);
+	vector<Vertex> tempVertex;
+	
+	for (int i = 0; i < mesh->vertexCount; i++)
+	{
+		Vertex v = mesh->vertices[i];
+		RotateVertex(v);
+		ScaleVertex(v);
+		TranslateVertex(v);
+		tempVertex.push_back(v);
+	}
+
+	return AABBCollider(tempVertex, position);
+}
+
+void SceneObject::ScaleVertex(Vertex& vertex)
+{
+	vertex.x *= scale.x;
+	vertex.y *= scale.y;
+	vertex.z *= scale.z;
+}
+
+void SceneObject::TranslateVertex(Vertex& vertex)
+{
+	vertex.x += position.x;
+	vertex.y += position.y;
+	vertex.z += position.z;
+}
+
+void SceneObject::RotateVertex(Vertex& vertex)
+{
+	vertex = HandleRotateVertex(vertex, rotation, rotationAxis);
+}
+
+Vertex SceneObject::HandleRotateVertex(Vertex vertex, float angleDegrees, Vector3 axis)
+{
+	//convert degrees to radians
+	float radians = angleDegrees * (3.14159265f / 180.0f);
+
+	//normalize axis
+	float length = sqrt(axis.x * axis.x + axis.y * axis.y + axis.z * axis.z);
+	axis.x /= length;
+	axis.y /= length;
+	axis.z /= length;
+
+	float cosA = cos(radians);
+	float sinA = sin(radians);
+
+	Vertex result;
+
+	//Rodrigues' rotation formula
+	result.x =
+		vertex.x * (cosA + axis.x * axis.x * (1 - cosA)) +
+		vertex.y * (axis.x * axis.y * (1 - cosA) - axis.z * sinA) +
+		vertex.z * (axis.x * axis.z * (1 - cosA) + axis.y * sinA);
+
+	result.y =
+		vertex.x * (axis.y * axis.x * (1 - cosA) + axis.z * sinA) +
+		vertex.y * (cosA + axis.y * axis.y * (1 - cosA)) +
+		vertex.z * (axis.y * axis.z * (1 - cosA) - axis.x * sinA);
+
+	result.z =
+		vertex.x * (axis.z * axis.x * (1 - cosA) - axis.y * sinA) +
+		vertex.y * (axis.z * axis.y * (1 - cosA) + axis.x * sinA) +
+		vertex.z * (cosA + axis.z * axis.z * (1 - cosA));
+
+	return result;
 }
 
 void SceneObject::OnClick()
 {
-	clicked = true;
+	
+}
+
+string SceneObject::GetName()
+{
+	return name;
 }

@@ -10,6 +10,11 @@ Text::~Text()
 
 }
 
+void Text::UpdateText(const char* text, Vector3 position, Colour colour)
+{
+	DrawString(text, &position, &colour);
+}
+
 void Text::DrawString(const char* text, Vector3* position, Colour* colour)
 {
 	glPushMatrix();

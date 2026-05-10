@@ -2,7 +2,12 @@
 
 SkyBox::SkyBox(Mesh* mesh, Texture2D* texture, float x, float y, float z) : SceneObject(mesh, texture, x, y, z)
 {
-	
+    LoadSkybox();
+}
+
+void SkyBox::SetCentre(Vector3 newCentre)
+{
+    camCentre = newCentre;
 }
 
 Texture2D* SkyBox::MakeTexture(char* path)
@@ -30,6 +35,10 @@ void SkyBox::Draw()
     glDisable(GL_CULL_FACE);
     glDepthMask(GL_FALSE);
     glColor3f(1, 1, 1);
+
+
+    glPushMatrix();
+    glTranslatef(camCentre.x, camCentre.y, camCentre.z);
 
     //front face
     glBindTexture(GL_TEXTURE_2D, skyboxTex[0]->GetID());
@@ -110,6 +119,8 @@ void SkyBox::Draw()
     glTexCoord2f(0, 1);
     glVertex3f(-1, -1, -1);
     glEnd();
+
+    glPopMatrix();
 
     glDepthMask(GL_TRUE);
     glEnable(GL_CULL_FACE);

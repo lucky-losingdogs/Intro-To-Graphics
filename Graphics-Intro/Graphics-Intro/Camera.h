@@ -16,7 +16,7 @@ public:
 	void MoveCamera(unsigned char key, float delta);
 	void RotateCamera(Vector2* mouseDelta);
 
-	Vector3 eye, center, up, forward;
+	Vector3 eye, center, up, forward, right;
 	float yaw, pitch;
 };
 

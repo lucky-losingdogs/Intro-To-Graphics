@@ -6,9 +6,11 @@ HelloGL::HelloGL(int argc, char* argv[])
 	InitGL(argc, argv);
 	InitCam();
 	InitMouse();
-	InitSkyBox();
 	InitLighting();
 	InitObjects();
+	InitText();
+
+	CreateMenu();
 	
 	glutMainLoop();
 }
@@ -23,18 +25,13 @@ void HelloGL::Display()
 	//clear colour and depth buffer
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//display skybox
-	glPushMatrix();
-	glTranslatef(camera->center.x, camera->center.y, camera->center.z);
+	//draw skybox
+	skyBox->SetCentre(Vector3(camera->center.x, camera->center.y, camera->center.z));
 	skyBox->Draw();
-	glPopMatrix();
 
 	DrawList(listHead);
 
-	//teapot->Draw();
-
-	//create a new text object in the center of the camera (follows cam movement)
-	//NewText("Hello OpenGL", Vector3::SetVector3(camera->center.x, camera->center.y, camera->center.z), Colour{ 1.0f, 1.0f, 1.0f });
+	DisplayData();
 
 	glFlush(); //flushes the scene drawn to the graphics card
 	glutSwapBuffers();
@@ -62,12 +59,23 @@ void HelloGL::Keyboard(unsigned char key, int x, int y)
 {
 	//changes the key input to lower case to stop caps not working 
 	key = (char)tolower(key);
-	
-	camera->MoveCamera(key, delta);
-}
 
-void HelloGL::SpecialKeyboard(int key, int x, int y)
-{
+	if (key == 'm')
+	{
+		//close menu and deattach
+		if (openMenu)
+		{
+			glutDetachMenu(GLUT_LEFT_BUTTON);
+			openMenu = false;
+		}
+		//open menu by attaching menu to LMB
+		else
+		{
+			glutAttachMenu(GLUT_LEFT_BUTTON);
+			openMenu = true;
+		}
+	}
+
 	camera->MoveCamera(key, delta);
 }
 
@@ -88,6 +96,7 @@ void HelloGL::MouseClick(int button, int state, int x, int y)
 			clickedObj->OnClick();
 		}
 	}
+	//allow cam movement when right button pressed down
 	else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
 	{
 		moveMouse = true;
@@ -130,8 +139,50 @@ void HelloGL::MouseMove(int x, int y)
 	glutWarpPointer(windowWidth / 2, windowHeight / 2);
 }
 
+void HelloGL::CreateMenu()
+{
+	//create main menu
+	mainMenu = glutCreateMenu(GLUTCallbacks::MenuHandler);
+
+
+	int objectCount = objects->GetListSize(listHead);
+	for (int i = 0; i < objectCount; i++)
+	{
+		//create sub menu for each obj in the world
+		LinkedNode<SceneObject*>* currentNode = objects->GetNode(listHead, i);
+		int subMenu = glutCreateMenu(GLUTCallbacks::MenuHandler);
+		textureMenus.push_back(subMenu);
+
+		for (int j = 0; j < allTextures.size(); j++)
+		{
+			//add current obj index + texture index together to access both
+			int menuValue = i * 1000 + j;
+
+			//add an entry for each texture
+			glutAddMenuEntry(allTextures[j].second.c_str(), menuValue);
+		}
+
+		//switch back to main menu and add submenu
+		glutSetMenu(mainMenu);
+		glutAddSubMenu(currentNode->data->GetName().c_str(), textureMenus[i]);
+	}
+}
+
+//update the texture of the node selected with the texture selected
+void HelloGL::MenuHandler(int option)
+{
+	//decode option value to get the obj index and texture index
+	int objIndex = option / 1000;
+	int texIndex = option % 1000;
+	
+	LinkedNode<SceneObject*>* node = objects->GetNode(listHead, objIndex);
+	node->data->UpdateTexture(allTextures[texIndex].first);
+}
+
 void HelloGL::InitGL(int argc, char* argv[])
 {
+	srand((unsigned int)time(nullptr));
+	
 	GLUTCallbacks::Init(this);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_DEPTH);
@@ -142,9 +193,6 @@ void HelloGL::InitGL(int argc, char* argv[])
 
 	//get keyboard input
 	glutKeyboardFunc(GLUTCallbacks::Keyboard);
-
-	//get special keyboard input
-	glutSpecialFunc(GLUTCallbacks::SpecialKeyboard);
 
 	//get mouse click input
 	glutMouseFunc(GLUTCallbacks::MouseClick);
@@ -185,54 +233,54 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glEnable(GL_LIGHT0);
 }
 
-void HelloGL::InitSkyBox()
+void HelloGL::InitSkyBox(Mesh* cubeMesh)
 {
-	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
 	Texture2D* tempTexture = new Texture2D();
-	tempTexture->LoadBMP((char*)"snail.bmp");
+	tempTexture->Load((char*)"penguins.raw", 512, 512);
 	skyBox = new SkyBox(cubeMesh, tempTexture,0,0,0);
+}
 
-	skyBox->LoadSkybox();
+void HelloGL::InitMesh()
+{
+	cubeMesh = MeshLoader::Load((char*)"cube.txt");
+	pawnMesh = ObjLoader::Load((char*)"Obj\\pawn.obj");
+	catMesh = ObjLoader::Load((char*)"Obj\\cat.obj");
+
+	chessTex = new Texture2D();
+	chessTex->LoadBMP((char*)"checkerboard.bmp");
+	pawnTex = new Texture2D();
+	pawnTex->LoadBMP((char*)"WoodPawn.bmp");
+	catTex = new Texture2D();
+	catTex->LoadBMP((char*)"cat.bmp");
+
+	allTextures.push_back({ chessTex, "Chess Texture" });
+	allTextures.push_back({ pawnTex, "Pawn Texture" });
+	allTextures.push_back({ catTex, "Cat Texture" });
 }
 
 void HelloGL::InitObjects()
 {
-	Mesh* cubeMesh = MeshLoader::Load((char*)"cube.txt");
+	InitMesh();
+	if (cubeMesh == nullptr || pawnMesh == nullptr || catMesh == nullptr)
+		return;
 
-	Texture2D* texture = new Texture2D();
-	texture->Load((char*)"penguins.raw", 512, 512);
-	Texture2D* texture2 = new Texture2D();
-	texture2->LoadBMP((char*)"snail.bmp");
+	InitSkyBox(cubeMesh);
 
-	objects->MakeNode(&listHead, (new Cube(cubeMesh, texture, 1.5f, 0, 5)));
-	objects->Append(listHead, (new Cube(cubeMesh, texture2, 1, 0, 35)));
-
-	/*Object::Load((char*)"Obj\\teapot.obj");
-	teapot = new Object(1, 1, 1);*/
+	objects->MakeNode(&listHead, (new Cube(cubeMesh, chessTex, 0, -10, 0)));
+	objects->GetNode(listHead, 0)->data->Scale(Vector3{ 20, 2, 20 });
+	SpawnPawn(6, pawnMesh, pawnTex);
+	SpawnCat(4, catMesh, catTex);
 }
 
 //initialise the lighting properties of the scene
 void HelloGL::InitLighting()
 {
-	lightPosition = new Vector4();
-	lightPosition->x = 0.0;
-	lightPosition->y = 0.0;
-	lightPosition->z = 1.0;
-	lightPosition->w = 0.0;
+	lightPosition = new Vector4{0, 1, -0.3f, 0};
 
 	lightData = new Lighting();
-	lightData->ambient.x = 0.2;
-	lightData->ambient.y = 0.2;
-	lightData->ambient.z = 0.2;
-	lightData->ambient.w = 1.0;
-	lightData->diffuse.x = 0.8;
-	lightData->diffuse.y = 0.8;
-	lightData->diffuse.z = 0.8;
-	lightData->diffuse.w = 1.0;
-	lightData->specular.x = 0.2;
-	lightData->specular.y = 0.2;
-	lightData->specular.z = 0.2;
-	lightData->specular.w = 1.0;
+	lightData->ambient = Vector4{ 0.7f, 0.65f, 0.6f, 1.0f };
+	lightData->diffuse = Vector4{ 0.8f, 0.8f, 0.8f, 1.0f };
+	lightData->specular = Vector4{ 0.2f, 0.2f, 0.2f, 1.0f };
 }
 
 void HelloGL::InitCam()
@@ -246,10 +294,40 @@ void HelloGL::InitMouse()
 	mouseDelta = new Vector2;
 }
 
-//make a new text object
-void HelloGL::NewText(const char* text, Vector3 position, Colour colour)
+void HelloGL::InitText()
 {
-	Text* newText = new Text(text, position, colour);
+	totalObjText = NewText("", Vector3(0,0,0), Colour{ 1.0f, 1.0f, 1.0f });
+}
+
+void HelloGL::DisplayData()
+{
+	//display text on 2d screen
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glOrtho(0, windowWidth, windowHeight, 0, -1, 1);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+	
+	string totalObj = "Number of objects: " + to_string(objects->GetListSize(listHead));
+
+	//create a new text object that follows cam movement
+	//set text to top left
+	totalObjText->UpdateText(totalObj.c_str(), Vector3(10, 20, 0), Colour{ 1.0f, 1.0f, 1.0f });
+
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+}
+
+//make a new text object
+Text* HelloGL::NewText(const char* text, Vector3 position, Colour colour)
+{
+	return new Text(text, position, colour);
 }
 
 SceneObject* HelloGL::GetObjectBounds(LinkedNode<SceneObject*>* node, Vector3 cursor)
@@ -317,5 +395,37 @@ void HelloGL::UpdateList(LinkedNode<SceneObject*>* node)
 	{
 		node->data->Update();
 		node = node->nextNode;
+	}
+}
+
+void HelloGL::SpawnPawn(int count, ObjMesh* mesh, Texture2D* texture)
+{
+	int spacing = -1;
+	int currentEnd = objects->GetListSize(listHead);
+
+	for (int i = 0; i < count; i++)
+	{
+		objects->Append(listHead, (new Object(mesh, texture, spacing, -9, 5)));
+		objects->GetNode(listHead, currentEnd + i)->data->Rotate(-90, Vector3{ 1, 0, 0 });
+
+		spacing += 7;
+	}
+}
+
+void HelloGL::SpawnCat(int count, ObjMesh* mesh, Texture2D* texture)
+{
+	int spacing = -20;
+	int currentEnd = objects->GetListSize(listHead);
+
+	for (int i = 0; i < count; i++)
+	{
+		objects->Append(listHead, (new Cat(mesh, texture, spacing, -3, 30)));
+		LinkedNode<SceneObject*>* catNode = objects->GetNode(listHead, currentEnd + i);
+
+		catNode->data->Rotate(180, Vector3{ 0, 1, 0 });
+		catNode->data->Rotate(90, Vector3{ 1, 0, 0 });
+		catNode->data->Scale(Vector3{ 0.2f, 0.2f, 0.2f });
+
+		spacing += 10;
 	}
 }

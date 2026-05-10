@@ -29,6 +29,8 @@ public:
 	void DeleteNode(LinkedNode<T>* node, int pos);
 	LinkedNode<T>* GetNode(LinkedNode<T>* node, int pos);
 	LinkedNode<T>* Find(LinkedNode<T>* node, T value);
+	int FindPosition(LinkedNode<T>* node, T value);
+	int GetListSize(LinkedNode<T>* node);
 	void PrintList(LinkedNode<T>* node);
 	void PrintListBackwards(LinkedNode<T>* node);
 
@@ -241,6 +243,44 @@ LinkedNode<T>* LinkedList<T>::Find(LinkedNode<T>* node, T value)
 
 	cerr << value << " is not in the list\n";
 	return nullptr;
+}
+
+template<typename T>
+inline int LinkedList<T>::FindPosition(LinkedNode<T>* node, T value)
+{
+	int count = 0;
+
+	while (node != nullptr)
+	{
+		if (node->data == value)
+		{
+			cout << value << " is in the list, at position " << count << endl;
+			return count;
+		}
+
+		count++;
+		node = node->nextNode;
+	}
+
+	cerr << value << " is not in the list\n";
+	return -1;
+}
+
+//<summary>
+// go through whole list and return count
+//</summary>
+template<typename T>
+inline int LinkedList<T>::GetListSize(LinkedNode<T>* node)
+{
+	int count = 0;
+
+	while (node != nullptr)
+	{
+		count++;
+		node = node->nextNode;
+	}
+
+	return count;
 }
 
 template <typename T>

@@ -45,6 +45,21 @@ struct Mesh
 	int vertexCount, normalsCount, indexCount, texCoordCount;
 };
 
+struct PackedVertex
+{
+	Vertex vertex;
+	Normal normal;
+	TexCoord texCoord;
+	int vertexCount, normalsCount, texCoordCount;
+};
+
+struct ObjMesh
+{
+	PackedVertex* vertices;
+	GLuint* indices;
+	int vertexCount, indexCount;
+};
+
 struct Vector4
 {
 	GLfloat x, y, z, w;

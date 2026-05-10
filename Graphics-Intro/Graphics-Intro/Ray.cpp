@@ -30,8 +30,8 @@ Ray::Ray(float x, float y)
 	//far points in scene
 	gluUnProject(winX, winY, 1.0, modelview, projection, viewport, &farX, &farY, &farZ);
 
-	Vector3 _origin = Vector3::SetVector3((float)nearX, (float)nearY, (float)nearZ);
-	Vector3 _direction = Vector3::SetVector3((float)(farX - nearX), (float)(farY - nearY), (float)(farZ - nearZ));
+	Vector3 _origin = Vector3((float)nearX, (float)nearY, (float)nearZ);
+	Vector3 _direction = Vector3((float)(farX - nearX), (float)(farY - nearY), (float)(farZ - nearZ));
 	//normalise for a unit direction
 	_direction = Vector3::Normalise(_direction);
 

@@ -9,5 +9,7 @@ private:
 public:
 	Text(const char* text, Vector3 position, Colour colour);
 	~Text();
+
+	void UpdateText(const char* text, Vector3 position, Colour colour);
 };
 

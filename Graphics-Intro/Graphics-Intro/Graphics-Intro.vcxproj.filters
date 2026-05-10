@@ -60,6 +60,12 @@
     <ClCompile Include="SkyBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ObjLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HelloGL.h">
@@ -113,6 +119,12 @@
     <ClInclude Include="SkyBox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ObjLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="pyramid.txt">
@@ -147,6 +159,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Box_Top.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="checkerboard.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="WoodPawn.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="cat.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

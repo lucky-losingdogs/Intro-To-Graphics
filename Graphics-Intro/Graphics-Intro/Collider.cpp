@@ -1,14 +1,13 @@
 #include "Collider.h"
 #include <iostream>
 
-AABBCollider::AABBCollider(Mesh* mesh, Vector3 position)
+AABBCollider::AABBCollider(vector<Vertex> vertices, Vector3 position)
 {
-    Vertex* vertices = mesh->vertices;
     min = vertices[0];
     max = vertices[0];
     
     //set the min and max vertices by comparing all of the vertices of the mesh
-    for (int i = 0; i < mesh->vertexCount; i++)
+    for (int i = 0; i < vertices.size(); i++)
     {
         if (vertices[i].x < min.x)
             min.x = vertices[i].x;
@@ -24,9 +23,6 @@ AABBCollider::AABBCollider(Mesh* mesh, Vector3 position)
         if (vertices[i].z > max.z)
             max.z = vertices[i].z;
     }
-
-    min = Vector3::Add(min, position);
-    max = Vector3::Add(max, position);
 }
 
 //check if the min/max vector values collide with the other min/max vectors

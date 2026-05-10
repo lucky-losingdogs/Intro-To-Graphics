@@ -2,30 +2,30 @@
 
 Camera::Camera()
 {
-	eye = Vector3::SetVector3(0, 0, -1);
-	center = Vector3::SetVector3(0, 0, 0);
-	up = Vector3::SetVector3(0, 1, 0);
-	forward = Vector3::SetVector3(0, 0, -1);
+	eye = Vector3( 0, 0, -1 );
+	center = Vector3(0, 0, 0);
+	up = Vector3(0, 1, 0);
+	forward = Vector3(0, 0, -1);
+	right = Vector3::Normalise(Vector3::CrossProduct(forward, up));
 	yaw = 0;
 	pitch = 0;
 }
 
 Camera::~Camera()
 {
-	delete this;
+	
 }
 
 void Camera::Update()
 {
 	center = Vector3::Add(eye, forward);
+	right = Vector3::Normalise(Vector3::CrossProduct(forward, up));
+
 	gluLookAt(eye.x, eye.y, eye.z, center.x, center.y, center.z, up.x, up.y, up.z);
 }
 
 void Camera::MoveCamera(unsigned char key, float delta)
 {
-	Vector3 right = Vector3::CrossProduct(forward, up);
-	right = Vector3::Normalise(right);
-	
 	//moves the camera along X axis
 	switch (key)
 	{
@@ -66,6 +66,6 @@ void Camera::RotateCamera(Vector2* mouseDelta)
 	float radYaw = yaw * 3.14159265f / 180.0f;
 	float radPitch = pitch * 3.14159265f / 180.0f;
 
-	Vector3 direction = Vector3::SetVector3(cosf(radYaw) * cosf(radPitch), sinf(radPitch), sinf(radYaw) * (cosf(radPitch)));
+	Vector3 direction = Vector3(cosf(radYaw) * cosf(radPitch), sinf(radPitch), sinf(radYaw) * (cosf(radPitch)));
 	forward = Vector3::Normalise(direction);
 }

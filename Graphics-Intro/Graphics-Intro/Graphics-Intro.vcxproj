@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Cat.cpp" />
     <ClCompile Include="Collider.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="GLUTCallbacks.cpp" />
@@ -131,6 +132,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MeshLoader.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="ObjLoader.cpp" />
     <ClCompile Include="Pyramid.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="SceneObject.cpp" />
@@ -142,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Cat.h" />
     <ClInclude Include="Collider.h" />
     <ClInclude Include="Cube.h" />
     <ClInclude Include="GLUTCallbacks.h" />
@@ -149,6 +152,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MeshLoader.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="ObjLoader.h" />
     <ClInclude Include="Pyramid.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="SceneObject.h" />
@@ -172,7 +176,10 @@
     <Image Include="Box_Left.bmp" />
     <Image Include="Box_Right.bmp" />
     <Image Include="Box_Top.bmp" />
+    <Image Include="cat.bmp" />
+    <Image Include="checkerboard.bmp" />
     <Image Include="snail.bmp" />
+    <Image Include="WoodPawn.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

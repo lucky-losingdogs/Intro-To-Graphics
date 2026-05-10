@@ -1,12 +1,6 @@
 #include "Vector3.h"
 #include "Structures.h"
 
-Vector3 Vector3::SetVector3(float x, float y, float z)
-{
-	Vector3 vector3 = { x, y, z };
-	return vector3;
-}
-
 Vector3 Vector3::Add(Vector3 a, Vector3 b)
 {
 	return { a.x + b.x, a.y + b.y, a.z + b.z };
@@ -40,5 +34,10 @@ Vector3 Vector3::Normalise(Vector3 v)
 
 Vector3 Vector3::CrossProduct(Vector3 a, Vector3 b)
 {
-	return { ((a.y * b.z) - (a.z * b.y)) - ((a.x * b.z) - (a.z * b.x)) + ((a.x * b.y) - (a.y * b.x))};
+	return Vector3(((a.y * b.z) - (a.z * b.y)), ((a.x * b.z) - (a.z * b.x)), ((a.x * b.y) - (a.y * b.x)));
+}
+
+float Vector3::Magnitude(Vector3 a)
+{
+	return sqrt((a.x * a.x) + (a.y * a.y) + (a.z * a.z));
 }
