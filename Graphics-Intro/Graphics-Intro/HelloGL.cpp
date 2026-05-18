@@ -207,7 +207,7 @@ void HelloGL::InitGL(int argc, char* argv[])
 	glLoadIdentity();
 
 	//set viewport to window size
-	glViewport(0, 0, 800, 800);
+	glViewport(0, 0, windowWidth, windowHeight);
 
 	//set the correct perspective
 	gluPerspective(45, 1, 0.5, 1000);
@@ -223,10 +223,6 @@ void HelloGL::InitGL(int argc, char* argv[])
 	//enable back face culling
 	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
-
-	//texture filtering
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
 	//enable lighting and the first light source
 	glEnable(GL_LIGHTING);

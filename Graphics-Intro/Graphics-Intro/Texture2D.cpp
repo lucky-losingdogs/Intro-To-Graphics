@@ -110,6 +110,10 @@ void Texture2D::BindTextureID(int width, int height, char* tempTextureData)
 	//specify details of the texture img
 	gluBuild2DMipmaps(GL_TEXTURE_2D, GL_RGB, width, height, GL_RGB, GL_UNSIGNED_BYTE, tempTextureData);
 
+	//texture filtering
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
 	//clear data we don't need anymore
 	delete[] tempTextureData;
 }
